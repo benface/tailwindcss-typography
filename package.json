@@ -1,0 +1,16 @@
+{
+  "name": "tailwindcss-typography",
+  "version": "1.0.0",
+  "description": "Tailwind CSS plugin to generate typography utilities",
+  "author": "Benoît Rouleau <benoit.rouleau@icloud.com>",
+  "license": "ISC",
+  "repository": "https://github.com/benface/tailwindcss-typography.git",
+  "bugs": "https://github.com/benface/tailwindcss-typography/issues",
+  "homepage": "https://github.com/benface/tailwindcss-typography",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}
