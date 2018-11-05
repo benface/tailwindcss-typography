@@ -1,21 +1,100 @@
-const plugin = require('./index.js');
+const _ = require('lodash');
+const cssMatcher = require('jest-matcher-css');
+const postcss = require('postcss');
+const tailwindcss = require('tailwindcss');
+const defaultConfig = require('tailwindcss/defaultConfig')();
+const typographyPlugin = require('./index.js');
 
-let generatedUtilities = {};
-
-plugin({
-  indents: {
-    '1': '1px',
-    '2': '2px',
-  },
-  textShadows: {
-    'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
-    'large': '0 2px 10px rgba(0, 0, 0, 0.5)',
-  },
-})({
-  e: value => value,
-  addUtilities: (utilities) => {
-    generatedUtilities = utilities;
-  },
+const disabledModules = {};
+Object.keys(defaultConfig.modules).forEach(module => {
+  disabledModules[module] = false;
 });
 
-console.log('generatedUtilities', generatedUtilities);
+const generatePluginCss = (options = {}) => {
+  return postcss(tailwindcss({
+    modules: disabledModules,
+    plugins: [typographyPlugin(options)],
+  })).process('@tailwind utilities;', {
+    from: undefined,
+  }).then(result => {
+    return result.css;
+  });
+};
+
+expect.extend({
+  toMatchCss: cssMatcher,
+});
+
+test('options are not required', () => {
+  return generatePluginCss().then(css => {
+    expect(css).toMatchCss(`
+      .ellipsis {
+        text-overflow: ellipsis;
+      }
+      .hyphens {
+        hyphens: auto;
+      }
+    `);
+  });
+});
+
+test('all the options are working as they should', () => {
+  return generatePluginCss({
+    indents: {
+      '1': '1px',
+      '2': '2px',
+    },
+    textShadows: {
+      'default': '0 2px 5px rgba(0, 0, 0, .5)',
+      'lg': '0 2px 10px rgba(0, 0, 0, .5)',
+    },
+  }).then(css => {
+    expect(css).toMatchCss(`
+      .ellipsis {
+        text-overflow: ellipsis;
+      }
+      .hyphens {
+        hyphens: auto;
+      }
+      .indent-1 {
+        text-indent: 1px;
+      }
+      .indent-2 {
+        text-indent: 2px;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+      }
+      .text-shadow-lg {
+        text-shadow: 0 2px 10px rgba(0, 0, 0, .5);
+      }
+    `);
+  });
+});
+
+test('variants are supported', () => {
+  return generatePluginCss({
+    variants: ['hover', 'active'],
+  }).then(css => {
+    expect(css).toMatchCss(`
+      .ellipsis {
+        text-overflow: ellipsis;
+      }
+      .hyphens {
+        hyphens: auto;
+      }
+      .hover\\:ellipsis:hover {
+        text-overflow: ellipsis;
+      }
+      .hover\\:hyphens:hover {
+        hyphens: auto;
+      }
+      .active\\:ellipsis:active {
+        text-overflow: ellipsis;
+      }
+      .active\\:hyphens:active {
+        hyphens: auto;
+      }
+    `);
+  });
+});

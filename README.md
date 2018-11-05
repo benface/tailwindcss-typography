@@ -20,7 +20,7 @@ npm install tailwindcss-typography
       },
       textShadows: {
         'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
-        'large': '0 2px 10px rgba(0, 0, 0, 0.5)',
+        'lg': '0 2px 10px rgba(0, 0, 0, 0.5)',
       },
     }),
   ],
