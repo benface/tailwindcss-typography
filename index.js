@@ -1,14 +1,16 @@
 const _ = require('lodash');
 
 module.exports = ({
-  variants = {},
   indents = {},
   textShadows = {},
+  variants = [],
 } = {}) => ({ e, addUtilities }) => {
   addUtilities(
     {
       '.ellipsis': { textOverflow: 'ellipsis' },
-      '.hyphens': { hyphens: 'auto' },
+      '.hyphens-none': { hyphens: 'none' },
+      '.hyphens-manual': { hyphens: 'manual' },
+      '.hyphens-auto': { hyphens: 'auto' },
       ...Object.assign(
         {},
         ..._.map(indents, (value, name) => ({

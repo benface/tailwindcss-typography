@@ -31,7 +31,13 @@ test('options are not required', () => {
       .ellipsis {
         text-overflow: ellipsis;
       }
-      .hyphens {
+      .hyphens-none {
+        hyphens: none;
+      }
+      .hyphens-manual {
+        hyphens: manual;
+      }
+      .hyphens-auto {
         hyphens: auto;
       }
     `);
@@ -53,7 +59,13 @@ test('all the options are working as they should', () => {
       .ellipsis {
         text-overflow: ellipsis;
       }
-      .hyphens {
+      .hyphens-none {
+        hyphens: none;
+      }
+      .hyphens-manual {
+        hyphens: manual;
+      }
+      .hyphens-auto {
         hyphens: auto;
       }
       .indent-1 {
@@ -80,19 +92,37 @@ test('variants are supported', () => {
       .ellipsis {
         text-overflow: ellipsis;
       }
-      .hyphens {
+      .hyphens-none {
+        hyphens: none;
+      }
+      .hyphens-manual {
+        hyphens: manual;
+      }
+      .hyphens-auto {
         hyphens: auto;
       }
       .hover\\:ellipsis:hover {
         text-overflow: ellipsis;
       }
-      .hover\\:hyphens:hover {
+      .hover\\:hyphens-none:hover {
+        hyphens: none;
+      }
+      .hover\\:hyphens-manual:hover {
+        hyphens: manual;
+      }
+      .hover\\:hyphens-auto:hover {
         hyphens: auto;
       }
       .active\\:ellipsis:active {
         text-overflow: ellipsis;
       }
-      .active\\:hyphens:active {
+      .active\\:hyphens-none:active {
+        hyphens: none;
+      }
+      .active\\:hyphens-manual:active {
+        hyphens: manual;
+      }
+      .active\\:hyphens-auto:active {
         hyphens: auto;
       }
     `);

@@ -1,4 +1,4 @@
-# Typography Tailwind CSS Plugin
+# Typography Plugin for Tailwind CSS
 
 ## Installation
 
@@ -13,7 +13,6 @@ npm install tailwindcss-typography
 {
   plugins: [
     require('tailwindcss-typography')({
-      variants: ['responsive'],
       indents: {
         '1': '1px',
         '2': '2px',
@@ -22,6 +21,7 @@ npm install tailwindcss-typography
         'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
         'lg': '0 2px 10px rgba(0, 0, 0, 0.5)',
       },
+      variants: ['responsive'],
     }),
   ],
 }
@@ -34,7 +34,15 @@ This plugin generates the following utilities:
   text-overflow: ellipsis;
 }
 
-.hyphens {
+.hyphens-none {
+  hyphens: none;
+}
+
+.hyphens-manual {
+  hyphens: manual;
+}
+
+.hyphens-auto {
   hyphens: auto;
 }
 
