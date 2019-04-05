@@ -22,13 +22,18 @@ npm install tailwindcss-typography
     },
   },
   variants: {
-    ellipsis: ['responsive'], // defaults to ['responsive']
-    hyphens: ['responsive'], // defaults to ['responsive']
     textIndent: ['responsive'], // defaults to ['responsive']
     textShadow: ['responsive', 'hover'], // defaults to ['responsive']
+    ellipsis: ['responsive'], // defaults to ['responsive']
+    hyphens: ['responsive'], // defaults to ['responsive']
+    textUnset: ['responsive'], // defaults to ['responsive']
   },
   plugins: [
-    require('tailwindcss-typography')(),
+    require('tailwindcss-typography')({
+      ellipsis: true, // defaults to true
+      hyphens: true, // defaults to true
+      textUnset: true, // defaults to true
+    }),
   ],
 }
 ```
@@ -36,22 +41,6 @@ npm install tailwindcss-typography
 This plugin generates the following utilities:
 
 ```css
-.ellipsis {
-  text-overflow: ellipsis;
-}
-
-.hyphens-none {
-  hyphens: none;
-}
-
-.hyphens-manual {
-  hyphens: manual;
-}
-
-.hyphens-auto {
-  hyphens: auto;
-}
-
 /* configurable with the "textIndent" theme key */
 .indent-[key] {
   text-indent: [value];
@@ -60,6 +49,51 @@ This plugin generates the following utilities:
 /* configurable with the "textShadow" theme key */
 .text-shadow-[key] {
   text-shadow: [value];
+}
+
+/* disableable with the "ellipsis" option */
+.ellipsis {
+  text-overflow: ellipsis;
+}
+
+/* disableable with the "hyphens" option */
+.hyphens-none {
+  hyphens: none;
+}
+.hyphens-manual {
+  hyphens: manual;
+}
+.hyphens-auto {
+  hyphens: auto;
+}
+
+/* disableable with the "textUnset" option */
+.font-family-unset {
+  font-family: inherit;
+}
+.font-weight-unset {
+  font-weight: inherit;
+}
+.font-style-unset {
+  font-style: inherit;
+}
+.text-size-unset {
+  font-size: inherit;
+}
+.text-align-unset {
+  text-align: inherit;
+}
+.leading-unset {
+  line-height: inherit;
+}
+.tracking-unset {
+  letter-spacing: inherit;
+}
+.text-color-unset {
+  color: inherit;
+}
+.text-transform-unset {
+  text-transform: inherit;
 }
 ```
 
