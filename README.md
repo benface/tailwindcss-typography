@@ -12,11 +12,11 @@ npm install tailwindcss-typography
 // In your Tailwind CSS config
 {
   theme: {
-    textIndent: {
+    textIndent: { // defaults to {}
       '1': '0.25rem',
       '2': '0.5rem',
     },
-    textShadow: {
+    textShadow: { // defaults to {}
       'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
       'lg': '0 2px 10px rgba(0, 0, 0, 0.5)',
     },
