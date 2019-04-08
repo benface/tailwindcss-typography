@@ -39,7 +39,7 @@ expect.extend({
   toMatchCss: cssMatcher,
 });
 
-test('the plugin generates some responsive utilities by default', () => {
+test('the plugin generates some utilities and responsive variants by default', () => {
   return generatePluginCss().then(css => {
     expect(css).toMatchCss(`
       .ellipsis {

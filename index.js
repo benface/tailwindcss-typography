@@ -7,6 +7,8 @@ module.exports = function(options = {}) {
       hyphens: true,
       textUnset: true,
     };
+    options = _.merge({}, defaultOptions, options);
+    
     const defaultTextIndentTheme = {};
     const defaultTextIndentVariants = ['responsive'];
     const defaultTextShadowTheme = {};
@@ -14,8 +16,6 @@ module.exports = function(options = {}) {
     const defaultEllipsisVariants = ['responsive'];
     const defaultHyphensVariants = ['responsive'];
     const defaultTextUnsetVariants = ['responsive'];
-
-    options = _.merge({}, defaultOptions, options);
 
     const textIndentUtilities = _.fromPairs(
       _.map(config('theme.textIndent', defaultTextIndentTheme), (value, modifier) => {
