@@ -1,7 +1,7 @@
 const _ = require('lodash');
 
 module.exports = function(options = {}) {
-  return ({ config, e, addUtilities }) => {
+  return ({ config, e, addUtilities, variants }) => {
     const defaultOptions = {
       ellipsis: true,
       hyphens: true,
@@ -87,16 +87,16 @@ module.exports = function(options = {}) {
       },
     };
 
-    addUtilities(textIndentUtilities, config('variants.textIndent', defaultTextIndentVariants));
-    addUtilities(textShadowUtilities, config('variants.textShadow', defaultTextShadowVariants));
+    addUtilities(textIndentUtilities, variants('textIndent', defaultTextIndentVariants));
+    addUtilities(textShadowUtilities, variants('textShadow', defaultTextShadowVariants));
     if (options.ellipsis) {
-      addUtilities(ellipsisUtilities, config('variants.ellipsis', defaultEllipsisVariants));
+      addUtilities(ellipsisUtilities, variants('ellipsis', defaultEllipsisVariants));
     }
     if (options.hyphens) {
-      addUtilities(hyphensUtilities, config('variants.hyphens', defaultHyphensVariants));
+      addUtilities(hyphensUtilities, variants('hyphens', defaultHyphensVariants));
     }
     if (options.textUnset) {
-      addUtilities(textUnsetUtilities, config('variants.textUnset', defaultTextUnsetVariants));
+      addUtilities(textUnsetUtilities, variants('textUnset', defaultTextUnsetVariants));
     }
   };
 };
