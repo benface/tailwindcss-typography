@@ -1,13 +1,13 @@
 const _ = require('lodash');
 
 module.exports = function(options = {}) {
-  return ({ config, e, addUtilities, variants }) => {
+  return ({ theme, variants, e, addUtilities }) => {
     const defaultOptions = {
       ellipsis: true,
       hyphens: true,
       textUnset: true,
     };
-    options = _.merge({}, defaultOptions, options);
+    options = _.defaults({}, options, defaultOptions);
     
     const defaultTextIndentTheme = {};
     const defaultTextIndentVariants = ['responsive'];
@@ -17,8 +17,16 @@ module.exports = function(options = {}) {
     const defaultHyphensVariants = ['responsive'];
     const defaultTextUnsetVariants = ['responsive'];
 
+    const textIndentTheme = theme('textIndent', defaultTextIndentTheme);
+    const textIndentVariants = variants('textIndent', defaultTextIndentVariants);
+    const textShadowTheme = theme('textShadow', defaultTextShadowTheme);
+    const textShadowVariants = variants('textShadow', defaultTextShadowVariants);
+    const ellipsisVariants = variants('ellipsis', defaultEllipsisVariants);
+    const hyphensVariants = variants('hyphens', defaultHyphensVariants);
+    const textUnsetVariants = variants('textUnset', defaultTextUnsetVariants);
+
     const textIndentUtilities = _.fromPairs(
-      _.map(config('theme.textIndent', defaultTextIndentTheme), (value, modifier) => {
+      _.map(textIndentTheme, (value, modifier) => {
         return [
           `.${e(`indent-${modifier}`)}`,
           {
@@ -29,7 +37,7 @@ module.exports = function(options = {}) {
     );
 
     const textShadowUtilities = _.fromPairs(
-      _.map(config('theme.textShadow', defaultTextShadowTheme), (value, modifier) => {
+      _.map(textShadowTheme, (value, modifier) => {
         return [
           `.${e(`text-shadow${modifier === 'default' ? '' : `-${modifier}`}`)}`,
           {
@@ -87,16 +95,16 @@ module.exports = function(options = {}) {
       },
     };
 
-    addUtilities(textIndentUtilities, variants('textIndent', defaultTextIndentVariants));
-    addUtilities(textShadowUtilities, variants('textShadow', defaultTextShadowVariants));
+    addUtilities(textIndentUtilities, textIndentVariants);
+    addUtilities(textShadowUtilities, textShadowVariants);
     if (options.ellipsis) {
-      addUtilities(ellipsisUtilities, variants('ellipsis', defaultEllipsisVariants));
+      addUtilities(ellipsisUtilities, ellipsisVariants);
     }
     if (options.hyphens) {
-      addUtilities(hyphensUtilities, variants('hyphens', defaultHyphensVariants));
+      addUtilities(hyphensUtilities, hyphensVariants);
     }
     if (options.textUnset) {
-      addUtilities(textUnsetUtilities, variants('textUnset', defaultTextUnsetVariants));
+      addUtilities(textUnsetUtilities, textUnsetVariants);
     }
   };
 };
