@@ -20,6 +20,86 @@ npm install tailwindcss-typography
       'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
       'lg': '0 2px 10px rgba(0, 0, 0, 0.5)',
     },
+    textStyles: theme => ({ // defaults to {}
+      heading: {
+        output: false, // this means there won't be a "heading" component in the CSS, but it can be extended
+        fontWeight: theme('fontWeight.bold'),
+        lineHeight: theme('lineHeight.tight'),
+      },
+      h1: {
+        extends: 'heading', // this means all the styles in "heading" will be copied here; "extends" can also be an array to extend multiple text styles
+        fontSize: theme('fontSize.6xl'),
+      },
+      h2: {
+        extends: 'heading',
+        fontSize: theme('fontSize.5xl'),
+      },
+      h3: {
+        extends: 'heading',
+        fontSize: theme('fontSize.4xl'),
+      },
+      h4: {
+        extends: 'heading',
+        fontSize: theme('fontSize.3xl'),
+      },
+      h5: {
+        extends: 'heading',
+        fontSize: theme('fontSize.2xl'),
+      },
+      h6: {
+        extends: 'heading',
+        fontSize: theme('fontSize.xl'),
+      },
+      link: {
+        fontWeight: theme('fontWeight.bold'),
+        color: theme('colors.blue.400'),
+        '&:hover': {
+          color: theme('colors.blue.600'),
+          textDecoration: 'underline',
+        },
+      },
+      richText: {
+        fontWeight: theme('fontWeight.normal'),
+        fontSize: theme('fontSize.base'),
+        lineHeight: theme('lineHeight.relaxed'),
+        '> * + *': {
+          marginTop: '1em',
+        },
+        'h1': {
+          extends: 'h1',
+        },
+        'h2': {
+          extends: 'h2',
+        },
+        'h3': {
+          extends: 'h3',
+        },
+        'h4': {
+          extends: 'h4',
+        },
+        'h5': {
+          extends: 'h5',
+        },
+        'h6': {
+          extends: 'h6',
+        },
+        'ul': {
+          listStyleType: 'disc',
+        },
+        'ol': {
+          listStyleType: 'decimal',
+        },
+        'a': {
+          extends: 'link',
+        },
+        'b, strong': {
+          fontWeight: theme('fontWeight.bold'),
+        },
+        'i, em': {
+          fontStyle: 'italic',
+        },
+      },
+    }),
   },
   variants: { // all the following default to ['responsive']
     textIndent: ['responsive'],
@@ -30,9 +110,10 @@ npm install tailwindcss-typography
   },
   plugins: [
     require('tailwindcss-typography')({
-      ellipsis: true, // defaults to true
-      hyphens: true, // defaults to true
-      textUnset: true, // defaults to true
+      ellipsis: true,         // defaults to true
+      hyphens: true,          // defaults to true
+      textUnset: true,        // defaults to true
+      componentPrefix: 'c-',  // for text styles; defaults to 'c-'
     }),
   ],
 }
@@ -47,6 +128,7 @@ This plugin generates the following utilities:
 }
 
 /* configurable with the "textShadow" theme object */
+/* note: the "default" key generates a simple "text-shadow" class (instead of "text-shadow-default") */
 .text-shadow-[key] {
   text-shadow: [value];
 }
@@ -97,4 +179,105 @@ This plugin generates the following utilities:
 }
 ```
 
-Note: The `textShadow` theme object accepts a `default` key which generates a simple `text-shadow` class (instead of `text-shadow-default`).
+The plugin also generates components for text styles. The above config example would generate something like this:
+
+```
+.c-h1 {
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 4rem;
+}
+.c-h2 {
+  font-weight: 800;
+  line-height: 1.25;
+  font-size: 3rem;
+}
+.c-h3 {
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 2.25rem;
+}
+.c-h4 {
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 1.875rem;
+}
+.c-h5 {
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 1.5rem;
+}
+.c-h6 {
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 1.25rem;
+}
+
+.c-link {
+  font-weight: 700;
+  color: #63b3ed;
+}
+.c-link:hover {
+  color: #3182ce;
+  text-decoration: underline;
+}
+
+.c-rich-text {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.625;
+}
+.c-rich-text > * + * {
+  margin-top: 1em;
+}
+.c-rich-text h1 {
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 4rem;
+}
+.c-rich-text h2 {
+  font-weight: 800;
+  line-height: 1.25;
+  font-size: 3rem;
+}
+.c-rich-text h3 {
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 2.25rem;
+}
+.c-rich-text h4 {
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 1.875rem;
+}
+.c-rich-text h5 {
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 1.5rem;
+}
+.c-rich-text h6 {
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 1.25rem;
+}
+.c-rich-text ul {
+  list-style-type: disc;
+}
+.c-rich-text ol {
+  list-style-type: decimal;
+}
+.c-rich-text a {
+  font-weight: 700;
+  color: #63b3ed;
+}
+.c-rich-text a:hover {
+  color: #3182ce;
+  text-decoration: underline;
+}
+.c-rich-text b, .c-rich-text strong {
+  font-weight: 700;
+}
+.c-rich-text i, .c-rich-text em {
+  font-style: italic;
+}
+```
