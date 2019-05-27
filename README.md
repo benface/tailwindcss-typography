@@ -28,11 +28,17 @@ npm install tailwindcss-typography
       },
       h1: {
         extends: 'heading', // this means all the styles in "heading" will be copied here; "extends" can also be an array to extend multiple text styles
-        fontSize: theme('fontSize.6xl'),
+        fontSize: theme('fontSize.5xl'),
+        '@screen sm': {
+          fontSize: theme('fontSize.6xl'),
+        },
       },
       h2: {
         extends: 'heading',
-        fontSize: theme('fontSize.5xl'),
+        fontSize: theme('fontSize.4xl'),
+        '@screen sm': {
+          fontSize: theme('fontSize.5xl'),
+        },
       },
       h3: {
         extends: 'heading',
@@ -185,12 +191,22 @@ The plugin also generates components for text styles. The above config example w
 .c-h1 {
   font-weight: 700;
   line-height: 1.25;
-  font-size: 4rem;
+  font-size: 3rem;
+}
+@media (min-width: 640px) {
+  .c-h1 {
+    font-size: 4rem;
+  }
 }
 .c-h2 {
   font-weight: 800;
   line-height: 1.25;
-  font-size: 3rem;
+  font-size: 2.25rem;
+}
+@media (min-width: 640px) {
+  .c-h2 {
+    font-size: 3rem;
+  }
 }
 .c-h3 {
   font-weight: 700;
@@ -233,12 +249,22 @@ The plugin also generates components for text styles. The above config example w
 .c-rich-text h1 {
   font-weight: 700;
   line-height: 1.25;
-  font-size: 4rem;
+  font-size: 3rem;
+}
+@media (min-width: 640px) {
+  .c-rich-text h1 {
+    font-size: 4rem;
+  }
 }
 .c-rich-text h2 {
   font-weight: 800;
   line-height: 1.25;
-  font-size: 3rem;
+  font-size: 2.25rem;
+}
+@media (min-width: 640px) {
+  .c-rich-text h2 {
+    font-size: 3rem;
+  }
 }
 .c-rich-text h3 {
   font-weight: 700;

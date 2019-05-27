@@ -519,7 +519,6 @@ test('text style components can style their children', () => {
   });
 });
 
-/*
 test('text styles can be responsive', () => {
   return generatePluginCss({
     theme: {
@@ -609,7 +608,6 @@ test('text styles can be responsive', () => {
     `);
   });
 });
-*/
 
 test('text styles can be set to not be output', () => {
   return generatePluginCss({
