@@ -181,7 +181,7 @@ This plugin generates the following utilities:
 
 The plugin also generates components for text styles. The above config example would generate something like this:
 
-```
+```css
 .c-h1 {
   font-weight: 700;
   line-height: 1.25;
