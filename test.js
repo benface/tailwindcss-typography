@@ -337,7 +337,7 @@ test('text styles can extend more than one other text style', () => {
     theme: {
       fontFamily: {
         'default': 'sans-serif',
-        'heading': 'Helvetica',
+        'heading': ['Helvetica', 'Arial', 'sans-serif'],
       },
       fontWeight: {
         'bold': '700',
@@ -385,7 +385,7 @@ test('text styles can extend more than one other text style', () => {
   }).then(css => {
     expect(css).toMatchCss(`
       .c-heading {
-        font-family: Helvetica;
+        font-family: Helvetica, Arial, sans-serif;
         font-weight: 700;
       }
       .c-large-heading {
@@ -393,19 +393,19 @@ test('text styles can extend more than one other text style', () => {
         line-height: 1.25;
       }
       .c-h1 {
-        font-family: Helvetica;
+        font-family: Helvetica, Arial, sans-serif;
         font-weight: 800;
         line-height: 1.25;
         font-size: 64px;
       }
       .c-h2 {
-        font-family: Helvetica;
+        font-family: Helvetica, Arial, sans-serif;
         font-weight: 800;
         line-height: 1.25;
         font-size: 48px;
       }
       .c-h3 {
-        font-family: Helvetica;
+        font-family: Helvetica, Arial, sans-serif;
         font-weight: 700;
         font-size: 36px;
       }

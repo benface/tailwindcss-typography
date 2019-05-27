@@ -106,8 +106,8 @@ module.exports = function(options = {}) {
     };
 
     const resolveTextStyle = function(styles) {
-      if (!_.isObject(styles)) {
-        return styles;
+      if (!_.isPlainObject(styles)) {
+        return _.isArray(styles) ? styles.join(', ') : styles;
       }
       return _.transform(styles, function(result, value, key) {
         if (key === 'extends') {
