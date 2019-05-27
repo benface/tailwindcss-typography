@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-typography",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Tailwind CSS plugin to generate typography utilities",
   "author": "Benoît Rouleau <benoit.rouleau@icloud.com>",
   "license": "ISC",
