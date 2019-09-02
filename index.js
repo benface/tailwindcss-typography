@@ -61,6 +61,9 @@ module.exports = function(options = {}) {
       '.ellipsis': {
         textOverflow: 'ellipsis',
       },
+      '.no-ellipsis': {
+        textOverflow: 'clip',
+      },
     };
 
     const hyphensUtilities = {

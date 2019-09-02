@@ -38,6 +38,9 @@ test('the plugin generates some utilities and responsive variants by default', (
       .ellipsis {
         text-overflow: ellipsis;
       }
+      .no-ellipsis {
+        text-overflow: clip;
+      }
       .hyphens-none {
         hyphens: none;
       }
@@ -77,6 +80,9 @@ test('the plugin generates some utilities and responsive variants by default', (
       @media (min-width: 640px) {
         .sm\\:ellipsis {
           text-overflow: ellipsis;
+        }
+        .sm\\:no-ellipsis {
+          text-overflow: clip;
         }
         .sm\\:hyphens-none {
           hyphens: none;
@@ -128,9 +134,15 @@ test('the default utilities can be disabled', () => {
       .ellipsis {
         text-overflow: ellipsis;
       }
+      .no-ellipsis {
+        text-overflow: clip;
+      }
       @media (min-width: 640px) {
         .sm\\:ellipsis {
           text-overflow: ellipsis;
+        }
+        .sm\\:no-ellipsis {
+          text-overflow: clip;
         }
       }
     `);
@@ -156,6 +168,7 @@ test('text indent and text shadow utilities can be customized', () => {
       textShadow: [],
     },
   }, {
+    ellipsis: false,
     textUnset: false,
   }).then(css => {
     expect(css).toMatchCss(`
@@ -170,9 +183,6 @@ test('text indent and text shadow utilities can be customized', () => {
       }
       .text-shadow-lg {
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-      }
-      .ellipsis {
-        text-overflow: ellipsis;
       }
       .hyphens-none {
         hyphens: none;
@@ -840,8 +850,14 @@ test('variants can be customized', () => {
       .ellipsis {
         text-overflow: ellipsis;
       }
+      .no-ellipsis {
+        text-overflow: clip;
+      }
       .hover\\:ellipsis:hover {
         text-overflow: ellipsis;
+      }
+      .hover\\:no-ellipsis:hover {
+        text-overflow: clip;
       }
       .hyphens-none {
         hyphens: none;

@@ -143,6 +143,9 @@ This plugin generates the following utilities:
 .ellipsis {
   text-overflow: ellipsis;
 }
+.no-ellipsis {
+  text-overflow: clip;
+}
 
 /* disableable with the "hyphens" option */
 .hyphens-none {
