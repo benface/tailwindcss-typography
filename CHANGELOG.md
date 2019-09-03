@@ -5,10 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project mostly adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2.2.0] - 2019-09-02
 
 ### Added
-- Added a `no-ellipsis` utility to reset `ellipsis` at breakpoints
+- Added utilities for some OpenType features: caps (alternate glyphs for capital letters), nums (alternate glyphs for numbers, fractions, and ordinal markers), and ligatures
+- Added a `no-ellipsis` utility to undo `ellipsis` at breakpoints
 
 ## [2.1.1] - 2019-05-27
 
@@ -71,7 +72,8 @@ and this project mostly adheres to [Semantic Versioning](https://semver.org/spec
 
 Initial release
 
-[Unreleased]: https://github.com/benface/tailwindcss-typography/compare/v2.1.1...HEAD
+[Unreleased]: https://github.com/benface/tailwindcss-typography/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/benface/tailwindcss-typography/compare/v2.1.1...v2.2.0
 [2.1.1]: https://github.com/benface/tailwindcss-typography/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/benface/tailwindcss-typography/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/benface/tailwindcss-typography/compare/v2.0.0-beta.2...v2.0.0

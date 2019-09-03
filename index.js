@@ -13,6 +13,9 @@ module.exports = function(options = {}) {
       ellipsis: true,
       hyphens: true,
       textUnset: true,
+      caps: true,
+      nums: true,
+      ligatures: true,
       componentPrefix: 'c-',
     };
     options = _.defaults({}, options, defaultOptions);
@@ -24,6 +27,9 @@ module.exports = function(options = {}) {
     const defaultEllipsisVariants = ['responsive'];
     const defaultHyphensVariants = ['responsive'];
     const defaultTextUnsetVariants = ['responsive'];
+    const defaultCapsVariants = ['responsive'];
+    const defaultNumsVariants = ['responsive'];
+    const defaultLigaturesVariants = ['responsive'];
     const defaultTextStylesTheme = {};
 
     const textIndentTheme = theme('textIndent', defaultTextIndentTheme);
@@ -33,6 +39,9 @@ module.exports = function(options = {}) {
     const ellipsisVariants = variants('ellipsis', defaultEllipsisVariants);
     const hyphensVariants = variants('hyphens', defaultHyphensVariants);
     const textUnsetVariants = variants('textUnset', defaultTextUnsetVariants);
+    const capsVariants = variants('caps', defaultCapsVariants);
+    const numsVariants = variants('nums', defaultNumsVariants);
+    const ligaturesVariants = variants('ligatures', defaultLigaturesVariants);
     const textStylesTheme = theme('textStyles', defaultTextStylesTheme);
 
     const textIndentUtilities = _.fromPairs(
@@ -108,6 +117,90 @@ module.exports = function(options = {}) {
       },
     };
 
+    const capsUtilities = {
+      '.normal-caps': {
+        fontVariantCaps: 'normal',
+      },
+      '.small-caps': {
+        fontVariantCaps: 'small-caps',
+      },
+      '.all-small-caps': {
+        fontVariantCaps: 'all-small-caps',
+      },
+      '.petite-caps': {
+        fontVariantCaps: 'petite-caps',
+      },
+      '.unicase': {
+        fontVariantCaps: 'unicase',
+      },
+      '.titling-caps': {
+        fontVariantCaps: 'titling-caps',
+      },
+    };
+
+    const numsUtilities = {
+      '.normal-nums': {
+        fontVariantNumeric: 'normal',
+      },
+      '.ordinal-nums': {
+        fontVariantNumeric: 'ordinal',
+      },
+      '.slashed-zeros': {
+        fontVariantNumeric: 'slashed-zero',
+      },
+      '.lining-nums': {
+        fontVariantNumeric: 'lining-nums',
+      },
+      '.oldstyle-nums': {
+        fontVariantNumeric: 'oldstyle-nums',
+      },
+      '.proportional-nums': {
+        fontVariantNumeric: 'proportional-nums',
+      },
+      '.tabular-nums': {
+        fontVariantNumeric: 'tabular-nums',
+      },
+      '.diagonal-fractions': {
+        fontVariantNumeric: 'diagonal-fractions',
+      },
+      '.stacked-fractions': {
+        fontVariantNumeric: 'stacked-fractions',
+      },
+    };
+
+    const ligaturesUtilities = {
+      '.normal-ligatures': {
+        fontVariantLigatures: 'normal',
+      },
+      '.no-ligatures': {
+        fontVariantLigatures: 'none',
+      },
+      '.common-ligatures': {
+        fontVariantLigatures: 'common-ligatures',
+      },
+      '.no-common-ligatures': {
+        fontVariantLigatures: 'no-common-ligatures',
+      },
+      '.discretionary-ligatures': {
+        fontVariantLigatures: 'discretionary-ligatures',
+      },
+      '.no-discretionary-ligatures': {
+        fontVariantLigatures: 'no-discretionary-ligatures',
+      },
+      '.historical-ligatures': {
+        fontVariantLigatures: 'historical-ligatures',
+      },
+      '.no-historical-ligatures': {
+        fontVariantLigatures: 'no-historical-ligatures',
+      },
+      '.contextual-ligatures': {
+        fontVariantLigatures: 'contextual',
+      },
+      '.no-contextual-ligatures': {
+        fontVariantLigatures: 'no-contextual',
+      },
+    };
+
     const resolveTextStyle = function(styles) {
       if (!_.isPlainObject(styles)) {
         return _.isArray(styles) ? styles.join(', ') : styles;
@@ -151,6 +244,15 @@ module.exports = function(options = {}) {
     }
     if (options.textUnset) {
       addUtilities(textUnsetUtilities, textUnsetVariants);
+    }
+    if (options.caps) {
+      addUtilities(capsUtilities, capsVariants);
+    }
+    if (options.nums) {
+      addUtilities(numsUtilities, numsVariants);
+    }
+    if (options.ligatures) {
+      addUtilities(ligaturesUtilities, ligaturesVariants);
     }
     addComponents(textStyles);
   };

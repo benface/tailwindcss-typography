@@ -113,13 +113,20 @@ npm install tailwindcss-typography
     ellipsis: ['responsive'],
     hyphens: ['responsive'],
     textUnset: ['responsive'],
+    caps: ['responsive'],
+    nums: ['responsive'],
+    ligatures: ['responsive'],
   },
   plugins: [
     require('tailwindcss-typography')({
-      ellipsis: true,         // defaults to true
-      hyphens: true,          // defaults to true
-      textUnset: true,        // defaults to true
-      componentPrefix: 'c-',  // for text styles; defaults to 'c-'
+      // all these options default to the values specified here
+      ellipsis: true,         // whether to generate ellipsis utilities
+      hyphens: true,          // whether to generate hyphenation utilities
+      textUnset: true,        // whether to generate utilities to unset text properties
+      caps: true,             // whether to generate utilities to use alternate glyphs for capital letters
+      nums: true,             // whether to generate utilities to use alternate glyphs for numbers, fractions, and ordinal markers
+      ligatures: true,        // whether to generate ligature utilities
+      componentPrefix: 'c-',  // the prefix to use for text style classes
     }),
   ],
 }
@@ -139,7 +146,7 @@ This plugin generates the following utilities:
   text-shadow: [value];
 }
 
-/* disableable with the "ellipsis" option */
+/* generated when the "ellipsis" option is set to true */
 .ellipsis {
   text-overflow: ellipsis;
 }
@@ -147,7 +154,7 @@ This plugin generates the following utilities:
   text-overflow: clip;
 }
 
-/* disableable with the "hyphens" option */
+/* generated when the "hyphens" option is set to true */
 .hyphens-none {
   hyphens: none;
 }
@@ -158,7 +165,7 @@ This plugin generates the following utilities:
   hyphens: auto;
 }
 
-/* disableable with the "textUnset" option */
+/* generated when the "textUnset" option is set to true */
 .font-family-unset {
   font-family: inherit;
 }
@@ -185,6 +192,87 @@ This plugin generates the following utilities:
 }
 .text-transform-unset {
   text-transform: inherit;
+}
+
+/* generated when the "caps" option is set to true */
+.normal-caps {
+  font-variant-caps: normal;
+}
+.small-caps {
+  font-variant-caps: small-caps;
+}
+.all-small-caps {
+  font-variant-caps: all-small-caps;
+}
+.petite-caps {
+  font-variant-caps: petite-caps;
+}
+.unicase {
+  font-variant-caps: unicase;
+}
+.titling-caps {
+  font-variant-caps: titling-caps;
+}
+
+/* generated when the "nums" option is set to true */
+.normal-nums {
+  font-variant-numeric: normal;
+}
+.ordinal-nums {
+  font-variant-numeric: ordinal;
+}
+.slashed-zeros {
+  font-variant-numeric: slashed-zero;
+}
+.lining-nums {
+  font-variant-numeric: lining-nums;
+}
+.oldstyle-nums {
+  font-variant-numeric: oldstyle-nums;
+}
+.proportional-nums {
+  font-variant-numeric: proportional-nums;
+}
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+.diagonal-fractions {
+  font-variant-numeric: diagonal-fractions;
+}
+.stacked-fractions {
+  font-variant-numeric: stacked-fractions;
+}
+
+/* generated when the "ligatures" option is set to true */
+.normal-ligatures {
+  font-variant-ligatures: normal;
+}
+.no-ligatures {
+  font-variant-ligatures: none;
+}
+.common-ligatures {
+  font-variant-ligatures: common-ligatures;
+}
+.no-common-ligatures {
+  font-variant-ligatures: no-common-ligatures;
+}
+.discretionary-ligatures {
+  font-variant-ligatures: discretionary-ligatures;
+}
+.no-discretionary-ligatures {
+  font-variant-ligatures: no-discretionary-ligatures;
+}
+.historical-ligatures {
+  font-variant-ligatures: historical-ligatures;
+}
+.no-historical-ligatures {
+  font-variant-ligatures: no-historical-ligatures;
+}
+.contextual-ligatures {
+  font-variant-ligatures: contextual;
+}
+.no-contextual-ligatures {
+  font-variant-ligatures: no-contextual;
 }
 ```
 
