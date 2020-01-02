@@ -10,7 +10,7 @@ npm install tailwindcss-typography
 
 ```js
 // tailwind.config.js
-{
+module.exports = {
   theme: {
     textIndent: { // defaults to {}
       '1': '0.25rem',
@@ -19,6 +19,37 @@ npm install tailwindcss-typography
     textShadow: { // defaults to {}
       'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
       'lg': '0 2px 10px rgba(0, 0, 0, 0.5)',
+    },
+    fontVariantCaps: { // defaults to these values
+      'normal': 'normal',
+      'small': 'small-caps',
+      'all-small': 'all-small-caps',
+      'petite': 'petite-caps',
+      'unicase': 'unicase',
+      'titling': 'titling-caps',
+    },
+    fontVariantNumeric: { // defaults to these values
+      'normal': 'normal',
+      'ordinal': 'ordinal',
+      'slashed-zero': 'slashed-zero',
+      'lining': 'lining-nums',
+      'oldstyle': 'oldstyle-nums',
+      'proportional': 'proportional-nums',
+      'tabular': 'tabular-nums',
+      'diagonal-fractions': 'diagonal-fractions',
+      'stacked-fractions': 'stacked-fractions',
+    },
+    fontVariantLigatures: { // defaults to these values
+      'normal': 'normal',
+      'none': 'none',
+      'common': 'common-ligatures',
+      'no-common': 'no-common-ligatures',
+      'discretionary': 'discretionary-ligatures',
+      'no-discretionary': 'no-discretionary-ligatures',
+      'historical': 'historical-ligatures',
+      'no-historical': 'no-historical-ligatures',
+      'contextual': 'contextual',
+      'no-contextual': 'no-contextual',
     },
     textStyles: theme => ({ // defaults to {}
       heading: {
@@ -113,9 +144,9 @@ npm install tailwindcss-typography
     ellipsis: ['responsive'],
     hyphens: ['responsive'],
     textUnset: ['responsive'],
-    caps: ['responsive'],
-    nums: ['responsive'],
-    ligatures: ['responsive'],
+    fontVariantCaps: ['responsive'],
+    fontVariantNumeric: ['responsive'],
+    fontVariantLigatures: ['responsive'],
   },
   plugins: [
     require('tailwindcss-typography')({
@@ -123,13 +154,10 @@ npm install tailwindcss-typography
       ellipsis: true,         // whether to generate ellipsis utilities
       hyphens: true,          // whether to generate hyphenation utilities
       textUnset: true,        // whether to generate utilities to unset text properties
-      caps: true,             // whether to generate utilities to use alternate glyphs for capital letters
-      nums: true,             // whether to generate utilities to use alternate glyphs for numbers, fractions, and ordinal markers
-      ligatures: true,        // whether to generate ligature utilities
       componentPrefix: 'c-',  // the prefix to use for text style classes
     }),
   ],
-}
+};
 ```
 
 This plugin generates the following utilities:
@@ -194,84 +222,84 @@ This plugin generates the following utilities:
   text-transform: inherit;
 }
 
-/* generated when the "caps" option is set to true */
-.normal-caps {
+/* configurable with the "fontVariantCaps" theme object */
+.caps-normal {
   font-variant-caps: normal;
 }
-.small-caps {
+.caps-small {
   font-variant-caps: small-caps;
 }
-.all-small-caps {
+.caps-all-small {
   font-variant-caps: all-small-caps;
 }
-.petite-caps {
+.caps-petite {
   font-variant-caps: petite-caps;
 }
-.unicase {
+.caps-unicase {
   font-variant-caps: unicase;
 }
-.titling-caps {
+.caps-titling {
   font-variant-caps: titling-caps;
 }
 
-/* generated when the "nums" option is set to true */
-.normal-nums {
+/* configurable with the "fontVariantNumeric" theme object */
+.nums-normal {
   font-variant-numeric: normal;
 }
-.ordinal-nums {
+.nums-ordinal {
   font-variant-numeric: ordinal;
 }
-.slashed-zeros {
+.nums-slashed-zero {
   font-variant-numeric: slashed-zero;
 }
-.lining-nums {
+.nums-lining {
   font-variant-numeric: lining-nums;
 }
-.oldstyle-nums {
+.nums-oldstyle {
   font-variant-numeric: oldstyle-nums;
 }
-.proportional-nums {
+.nums-proportional {
   font-variant-numeric: proportional-nums;
 }
-.tabular-nums {
+.nums-tabular {
   font-variant-numeric: tabular-nums;
 }
-.diagonal-fractions {
+.nums-diagonal-fractions {
   font-variant-numeric: diagonal-fractions;
 }
-.stacked-fractions {
+.nums-stacked-fractions {
   font-variant-numeric: stacked-fractions;
 }
 
-/* generated when the "ligatures" option is set to true */
-.normal-ligatures {
+/* configurable with the "fontVariantLigatures" theme object */
+.ligatures-normal {
   font-variant-ligatures: normal;
 }
-.no-ligatures {
+.ligatures-none {
   font-variant-ligatures: none;
 }
-.common-ligatures {
+.ligatures-common {
   font-variant-ligatures: common-ligatures;
 }
-.no-common-ligatures {
+.ligatures-no-common {
   font-variant-ligatures: no-common-ligatures;
 }
-.discretionary-ligatures {
+.ligatures-discretionary {
   font-variant-ligatures: discretionary-ligatures;
 }
-.no-discretionary-ligatures {
+.ligatures-no-discretionary {
   font-variant-ligatures: no-discretionary-ligatures;
 }
-.historical-ligatures {
+.ligatures-historical {
   font-variant-ligatures: historical-ligatures;
 }
-.no-historical-ligatures {
+.ligatures-no-historical {
   font-variant-ligatures: no-historical-ligatures;
 }
-.contextual-ligatures {
+.ligatures-contextual {
   font-variant-ligatures: contextual;
 }
-.no-contextual-ligatures {
+.ligatures-no-contextual {
   font-variant-ligatures: no-contextual;
 }
 ```

@@ -1,4 +1,12 @@
+const plugin = require('tailwindcss/plugin');
 const _ = require('lodash');
+
+const defaultOptions = {
+  ellipsis: true,
+  hyphens: true,
+  textUnset: true,
+  componentPrefix: 'c-',
+};
 
 const camelCaseToKebabCase = function(string) {
   return string
@@ -7,45 +15,12 @@ const camelCaseToKebabCase = function(string) {
     .toLowerCase();
 };
 
-module.exports = function(options = {}) {
-  return ({ theme, variants, e, addUtilities, addComponents }) => {
-    const defaultOptions = {
-      ellipsis: true,
-      hyphens: true,
-      textUnset: true,
-      caps: true,
-      nums: true,
-      ligatures: true,
-      componentPrefix: 'c-',
-    };
+module.exports = plugin.withOptions(function(options = {}) {
+  return function({ theme, variants, e, addUtilities, addComponents }) {
     options = _.defaults({}, options, defaultOptions);
-    
-    const defaultTextIndentTheme = {};
-    const defaultTextIndentVariants = ['responsive'];
-    const defaultTextShadowTheme = {};
-    const defaultTextShadowVariants = ['responsive'];
-    const defaultEllipsisVariants = ['responsive'];
-    const defaultHyphensVariants = ['responsive'];
-    const defaultTextUnsetVariants = ['responsive'];
-    const defaultCapsVariants = ['responsive'];
-    const defaultNumsVariants = ['responsive'];
-    const defaultLigaturesVariants = ['responsive'];
-    const defaultTextStylesTheme = {};
-
-    const textIndentTheme = theme('textIndent', defaultTextIndentTheme);
-    const textIndentVariants = variants('textIndent', defaultTextIndentVariants);
-    const textShadowTheme = theme('textShadow', defaultTextShadowTheme);
-    const textShadowVariants = variants('textShadow', defaultTextShadowVariants);
-    const ellipsisVariants = variants('ellipsis', defaultEllipsisVariants);
-    const hyphensVariants = variants('hyphens', defaultHyphensVariants);
-    const textUnsetVariants = variants('textUnset', defaultTextUnsetVariants);
-    const capsVariants = variants('caps', defaultCapsVariants);
-    const numsVariants = variants('nums', defaultNumsVariants);
-    const ligaturesVariants = variants('ligatures', defaultLigaturesVariants);
-    const textStylesTheme = theme('textStyles', defaultTextStylesTheme);
 
     const textIndentUtilities = _.fromPairs(
-      _.map(textIndentTheme, (value, modifier) => {
+      _.map(theme('textIndent'), (value, modifier) => {
         return [
           `.${e(`indent-${modifier}`)}`,
           {
@@ -56,7 +31,7 @@ module.exports = function(options = {}) {
     );
 
     const textShadowUtilities = _.fromPairs(
-      _.map(textShadowTheme, (value, modifier) => {
+      _.map(theme('textShadow'), (value, modifier) => {
         return [
           `.${e(`text-shadow${modifier === 'default' ? '' : `-${modifier}`}`)}`,
           {
@@ -66,16 +41,16 @@ module.exports = function(options = {}) {
       })
     );
 
-    const ellipsisUtilities = {
+    const ellipsisUtilities = options.ellipsis ? {
       '.ellipsis': {
         textOverflow: 'ellipsis',
       },
       '.no-ellipsis': {
         textOverflow: 'clip',
       },
-    };
+    } : {};
 
-    const hyphensUtilities = {
+    const hyphensUtilities = options.hyphens ? {
       '.hyphens-none': {
         hyphens: 'none',
       },
@@ -85,9 +60,9 @@ module.exports = function(options = {}) {
       '.hyphens-auto': {
         hyphens: 'auto',
       },
-    };
+    } : {};
 
-    const textUnsetUtilities = {
+    const textUnsetUtilities = options.textUnset ? {
       '.font-family-unset': {
         fontFamily: 'inherit',
       },
@@ -115,91 +90,42 @@ module.exports = function(options = {}) {
       '.text-transform-unset': {
         textTransform: 'inherit',
       },
-    };
+    } : {};
 
-    const capsUtilities = {
-      '.normal-caps': {
-        fontVariantCaps: 'normal',
-      },
-      '.small-caps': {
-        fontVariantCaps: 'small-caps',
-      },
-      '.all-small-caps': {
-        fontVariantCaps: 'all-small-caps',
-      },
-      '.petite-caps': {
-        fontVariantCaps: 'petite-caps',
-      },
-      '.unicase': {
-        fontVariantCaps: 'unicase',
-      },
-      '.titling-caps': {
-        fontVariantCaps: 'titling-caps',
-      },
-    };
+    const fontVariantCapsUtilities = _.fromPairs(
+      _.map(theme('fontVariantCaps'), (value, modifier) => {
+        return [
+          `.${e(`caps-${modifier}`)}`,
+          {
+            fontVariantCaps: value,
+          },
+        ];
+      })
+    );
 
-    const numsUtilities = {
-      '.normal-nums': {
-        fontVariantNumeric: 'normal',
-      },
-      '.ordinal-nums': {
-        fontVariantNumeric: 'ordinal',
-      },
-      '.slashed-zeros': {
-        fontVariantNumeric: 'slashed-zero',
-      },
-      '.lining-nums': {
-        fontVariantNumeric: 'lining-nums',
-      },
-      '.oldstyle-nums': {
-        fontVariantNumeric: 'oldstyle-nums',
-      },
-      '.proportional-nums': {
-        fontVariantNumeric: 'proportional-nums',
-      },
-      '.tabular-nums': {
-        fontVariantNumeric: 'tabular-nums',
-      },
-      '.diagonal-fractions': {
-        fontVariantNumeric: 'diagonal-fractions',
-      },
-      '.stacked-fractions': {
-        fontVariantNumeric: 'stacked-fractions',
-      },
-    };
+    const fontVariantNumericUtilities = _.fromPairs(
+      _.map(theme('fontVariantNumeric'), (value, modifier) => {
+        return [
+          `.${e(`nums-${modifier}`)}`,
+          {
+            fontVariantNumeric: value,
+          },
+        ];
+      })
+    );
 
-    const ligaturesUtilities = {
-      '.normal-ligatures': {
-        fontVariantLigatures: 'normal',
-      },
-      '.no-ligatures': {
-        fontVariantLigatures: 'none',
-      },
-      '.common-ligatures': {
-        fontVariantLigatures: 'common-ligatures',
-      },
-      '.no-common-ligatures': {
-        fontVariantLigatures: 'no-common-ligatures',
-      },
-      '.discretionary-ligatures': {
-        fontVariantLigatures: 'discretionary-ligatures',
-      },
-      '.no-discretionary-ligatures': {
-        fontVariantLigatures: 'no-discretionary-ligatures',
-      },
-      '.historical-ligatures': {
-        fontVariantLigatures: 'historical-ligatures',
-      },
-      '.no-historical-ligatures': {
-        fontVariantLigatures: 'no-historical-ligatures',
-      },
-      '.contextual-ligatures': {
-        fontVariantLigatures: 'contextual',
-      },
-      '.no-contextual-ligatures': {
-        fontVariantLigatures: 'no-contextual',
-      },
-    };
+    const fontVariantLigaturesUtilities = _.fromPairs(
+      _.map(theme('fontVariantLigatures'), (value, modifier) => {
+        return [
+          `.${e(`ligatures-${modifier}`)}`,
+          {
+            fontVariantLigatures: value,
+          },
+        ];
+      })
+    );
+
+    const textStylesTheme = theme('textStyles');
 
     const resolveTextStyle = function(styles) {
       if (!_.isPlainObject(styles)) {
@@ -234,26 +160,65 @@ module.exports = function(options = {}) {
       })
     );
 
-    addUtilities(textIndentUtilities, textIndentVariants);
-    addUtilities(textShadowUtilities, textShadowVariants);
-    if (options.ellipsis) {
-      addUtilities(ellipsisUtilities, ellipsisVariants);
-    }
-    if (options.hyphens) {
-      addUtilities(hyphensUtilities, hyphensVariants);
-    }
-    if (options.textUnset) {
-      addUtilities(textUnsetUtilities, textUnsetVariants);
-    }
-    if (options.caps) {
-      addUtilities(capsUtilities, capsVariants);
-    }
-    if (options.nums) {
-      addUtilities(numsUtilities, numsVariants);
-    }
-    if (options.ligatures) {
-      addUtilities(ligaturesUtilities, ligaturesVariants);
-    }
+    addUtilities(textIndentUtilities, variants('textIndent'));
+    addUtilities(textShadowUtilities, variants('textShadow'));
+    addUtilities(ellipsisUtilities, variants('ellipsis'));
+    addUtilities(hyphensUtilities, variants('hyphens'));
+    addUtilities(textUnsetUtilities, variants('textUnset'));
+    addUtilities(fontVariantCapsUtilities, variants('fontVariantCaps'));
+    addUtilities(fontVariantNumericUtilities, variants('fontVariantNumeric'));
+    addUtilities(fontVariantLigaturesUtilities, variants('fontVariantLigatures'));
     addComponents(textStyles);
   };
-};
+}, function(options = {}) {
+  options = _.defaults({}, options, defaultOptions);
+
+  return {
+    theme: {
+      textIndent: {},
+      textShadow: {},
+      fontVariantCaps: {
+        'normal': 'normal',
+        'small': 'small-caps',
+        'all-small': 'all-small-caps',
+        'petite': 'petite-caps',
+        'unicase': 'unicase',
+        'titling': 'titling-caps',
+      },
+      fontVariantNumeric: {
+        'normal': 'normal',
+        'ordinal': 'ordinal',
+        'slashed-zero': 'slashed-zero',
+        'lining': 'lining-nums',
+        'oldstyle': 'oldstyle-nums',
+        'proportional': 'proportional-nums',
+        'tabular': 'tabular-nums',
+        'diagonal-fractions': 'diagonal-fractions',
+        'stacked-fractions': 'stacked-fractions',
+      },
+      fontVariantLigatures: {
+        'normal': 'normal',
+        'none': 'none',
+        'common': 'common-ligatures',
+        'no-common': 'no-common-ligatures',
+        'discretionary': 'discretionary-ligatures',
+        'no-discretionary': 'no-discretionary-ligatures',
+        'historical': 'historical-ligatures',
+        'no-historical': 'no-historical-ligatures',
+        'contextual': 'contextual',
+        'no-contextual': 'no-contextual',
+      },
+      textStyles: {},
+    },
+    variants: {
+      textIndent: ['responsive'],
+      textShadow: ['responsive'],
+      ellipsis: ['responsive'],
+      hyphens: ['responsive'],
+      textUnset: ['responsive'],
+      fontVariantCaps: ['responsive'],
+      fontVariantNumeric: ['responsive'],
+      fontVariantLigatures: ['responsive'],
+    },
+  };
+});

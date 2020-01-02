@@ -77,79 +77,79 @@ test('the plugin generates some utilities and responsive variants by default', (
       .text-transform-unset {
         text-transform: inherit;
       }
-      .normal-caps {
+      .caps-normal {
         font-variant-caps: normal;
       }
-      .small-caps {
+      .caps-small {
         font-variant-caps: small-caps;
       }
-      .all-small-caps {
+      .caps-all-small {
         font-variant-caps: all-small-caps;
       }
-      .petite-caps {
+      .caps-petite {
         font-variant-caps: petite-caps;
       }
-      .unicase {
+      .caps-unicase {
         font-variant-caps: unicase;
       }
-      .titling-caps {
+      .caps-titling {
         font-variant-caps: titling-caps;
       }
-      .normal-nums {
+      .nums-normal {
         font-variant-numeric: normal;
       }
-      .ordinal-nums {
+      .nums-ordinal {
         font-variant-numeric: ordinal;
       }
-      .slashed-zeros {
+      .nums-slashed-zero {
         font-variant-numeric: slashed-zero;
       }
-      .lining-nums {
+      .nums-lining {
         font-variant-numeric: lining-nums;
       }
-      .oldstyle-nums {
+      .nums-oldstyle {
         font-variant-numeric: oldstyle-nums;
       }
-      .proportional-nums {
+      .nums-proportional {
         font-variant-numeric: proportional-nums;
       }
-      .tabular-nums {
+      .nums-tabular {
         font-variant-numeric: tabular-nums;
       }
-      .diagonal-fractions {
+      .nums-diagonal-fractions {
         font-variant-numeric: diagonal-fractions;
       }
-      .stacked-fractions {
+      .nums-stacked-fractions {
         font-variant-numeric: stacked-fractions;
       }
-      .normal-ligatures {
+      .ligatures-normal {
         font-variant-ligatures: normal;
       }
-      .no-ligatures {
+      .ligatures-none {
         font-variant-ligatures: none;
       }
-      .common-ligatures {
+      .ligatures-common {
         font-variant-ligatures: common-ligatures;
       }
-      .no-common-ligatures {
+      .ligatures-no-common {
         font-variant-ligatures: no-common-ligatures;
       }
-      .discretionary-ligatures {
+      .ligatures-discretionary {
         font-variant-ligatures: discretionary-ligatures;
       }
-      .no-discretionary-ligatures {
+      .ligatures-no-discretionary {
         font-variant-ligatures: no-discretionary-ligatures;
       }
-      .historical-ligatures {
+      .ligatures-historical {
         font-variant-ligatures: historical-ligatures;
       }
-      .no-historical-ligatures {
+      .ligatures-no-historical {
         font-variant-ligatures: no-historical-ligatures;
       }
-      .contextual-ligatures {
+      .ligatures-contextual {
         font-variant-ligatures: contextual;
       }
-      .no-contextual-ligatures {
+      .ligatures-no-contextual {
         font-variant-ligatures: no-contextual;
       }
       @media (min-width: 640px) {
@@ -195,79 +195,79 @@ test('the plugin generates some utilities and responsive variants by default', (
         .sm\\:text-transform-unset {
           text-transform: inherit;
         }
-        .sm\\:normal-caps {
+        .sm\\:caps-normal {
           font-variant-caps: normal;
         }
-        .sm\\:small-caps {
+        .sm\\:caps-small {
           font-variant-caps: small-caps;
         }
-        .sm\\:all-small-caps {
+        .sm\\:caps-all-small {
           font-variant-caps: all-small-caps;
         }
-        .sm\\:petite-caps {
+        .sm\\:caps-petite {
           font-variant-caps: petite-caps;
         }
-        .sm\\:unicase {
+        .sm\\:caps-unicase {
           font-variant-caps: unicase;
         }
-        .sm\\:titling-caps {
+        .sm\\:caps-titling {
           font-variant-caps: titling-caps;
         }
-        .sm\\:normal-nums {
+        .sm\\:nums-normal {
           font-variant-numeric: normal;
         }
-        .sm\\:ordinal-nums {
+        .sm\\:nums-ordinal {
           font-variant-numeric: ordinal;
         }
-        .sm\\:slashed-zeros {
+        .sm\\:nums-slashed-zero {
           font-variant-numeric: slashed-zero;
         }
-        .sm\\:lining-nums {
+        .sm\\:nums-lining {
           font-variant-numeric: lining-nums;
         }
-        .sm\\:oldstyle-nums {
+        .sm\\:nums-oldstyle {
           font-variant-numeric: oldstyle-nums;
         }
-        .sm\\:proportional-nums {
+        .sm\\:nums-proportional {
           font-variant-numeric: proportional-nums;
         }
-        .sm\\:tabular-nums {
+        .sm\\:nums-tabular {
           font-variant-numeric: tabular-nums;
         }
-        .sm\\:diagonal-fractions {
+        .sm\\:nums-diagonal-fractions {
           font-variant-numeric: diagonal-fractions;
         }
-        .sm\\:stacked-fractions {
+        .sm\\:nums-stacked-fractions {
           font-variant-numeric: stacked-fractions;
         }
-        .sm\\:normal-ligatures {
+        .sm\\:ligatures-normal {
           font-variant-ligatures: normal;
         }
-        .sm\\:no-ligatures {
+        .sm\\:ligatures-none {
           font-variant-ligatures: none;
         }
-        .sm\\:common-ligatures {
+        .sm\\:ligatures-common {
           font-variant-ligatures: common-ligatures;
         }
-        .sm\\:no-common-ligatures {
+        .sm\\:ligatures-no-common {
           font-variant-ligatures: no-common-ligatures;
         }
-        .sm\\:discretionary-ligatures {
+        .sm\\:ligatures-discretionary {
           font-variant-ligatures: discretionary-ligatures;
         }
-        .sm\\:no-discretionary-ligatures {
+        .sm\\:ligatures-no-discretionary {
           font-variant-ligatures: no-discretionary-ligatures;
         }
-        .sm\\:historical-ligatures {
+        .sm\\:ligatures-historical {
           font-variant-ligatures: historical-ligatures;
         }
-        .sm\\:no-historical-ligatures {
+        .sm\\:ligatures-no-historical {
           font-variant-ligatures: no-historical-ligatures;
         }
-        .sm\\:contextual-ligatures {
+        .sm\\:ligatures-contextual {
           font-variant-ligatures: contextual;
         }
-        .sm\\:no-contextual-ligatures {
+        .sm\\:ligatures-no-contextual {
           font-variant-ligatures: no-contextual;
         }
       }
@@ -275,13 +275,18 @@ test('the plugin generates some utilities and responsive variants by default', (
   });
 });
 
-test('the default utilities can be disabled', () => {
-  return generatePluginCss({}, {
-    hyphens: false,
-    textUnset: false,
-    caps: false,
-    nums: false,
-    ligatures: false,
+test('the font variant utilities can be disabled', () => {
+  return generatePluginCss({
+    theme: {
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
+    },
+    variants: {
+      ellipsis: [],
+      hyphens: [],
+      textUnset: [],
+    },
   }).then(css => {
     expect(css).toMatchCss(`
       .ellipsis {
@@ -290,19 +295,63 @@ test('the default utilities can be disabled', () => {
       .no-ellipsis {
         text-overflow: clip;
       }
-      @media (min-width: 640px) {
-        .sm\\:ellipsis {
-          text-overflow: ellipsis;
-        }
-        .sm\\:no-ellipsis {
-          text-overflow: clip;
-        }
+      .hyphens-none {
+        hyphens: none;
+      }
+      .hyphens-manual {
+        hyphens: manual;
+      }
+      .hyphens-auto {
+        hyphens: auto;
+      }
+      .font-family-unset {
+        font-family: inherit;
+      }
+      .font-weight-unset {
+        font-weight: inherit;
+      }
+      .font-style-unset {
+        font-style: inherit;
+      }
+      .text-size-unset {
+        font-size: inherit;
+      }
+      .text-align-unset {
+        text-align: inherit;
+      }
+      .leading-unset {
+        line-height: inherit;
+      }
+      .tracking-unset {
+        letter-spacing: inherit;
+      }
+      .text-color-unset {
+        color: inherit;
+      }
+      .text-transform-unset {
+        text-transform: inherit;
       }
     `);
   });
 });
 
-test('text indent and text shadow utilities can be customized', () => {
+test('the ellipsis, hyphens, and text unset utilities can be disabled', () => {
+  return generatePluginCss({
+    theme: {
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
+    },
+  }, {
+    ellipsis: false,
+    hyphens: false,
+    textUnset: false,
+  }).then(css => {
+    expect(css).toMatchCss(``);
+  });
+});
+
+test('the text indent and text shadow utilities can be customized', () => {
   return generatePluginCss({
     theme: {
       textIndent: {
@@ -313,19 +362,18 @@ test('text indent and text shadow utilities can be customized', () => {
         'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
         'lg': '0 2px 10px rgba(0, 0, 0, 0.5)',
       },
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
     },
     variants: {
-      ellipsis: [],
-      hyphens: [],
       textIndent: [],
       textShadow: [],
     },
   }, {
     ellipsis: false,
+    hyphens: false,
     textUnset: false,
-    caps: false,
-    nums: false,
-    ligatures: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .indent-1 {
@@ -340,14 +388,119 @@ test('text indent and text shadow utilities can be customized', () => {
       .text-shadow-lg {
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       }
-      .hyphens-none {
-        hyphens: none;
+    `);
+  });
+});
+
+test('the font variant utilities can be extended', () => {
+  return generatePluginCss({
+    theme: {
+      extend: {
+        fontVariantCaps: {
+          'inherit': 'inherit',
+        },
+        fontVariantNumeric: {
+          'initial': 'initial',
+        },
+        fontVariantLigatures: {
+          'revert': 'revert',
+        },
+      },
+    },
+    variants: {
+      fontVariantCaps: [],
+      fontVariantNumeric: [],
+      fontVariantLigatures: [],
+    },
+  }, {
+    ellipsis: false,
+    hyphens: false,
+    textUnset: false,
+  }).then(css => {
+    expect(css).toMatchCss(`
+      .caps-normal {
+        font-variant-caps: normal;
       }
-      .hyphens-manual {
-        hyphens: manual;
+      .caps-small {
+        font-variant-caps: small-caps;
       }
-      .hyphens-auto {
-        hyphens: auto;
+      .caps-all-small {
+        font-variant-caps: all-small-caps;
+      }
+      .caps-petite {
+        font-variant-caps: petite-caps;
+      }
+      .caps-unicase {
+        font-variant-caps: unicase;
+      }
+      .caps-titling {
+        font-variant-caps: titling-caps;
+      }
+      .caps-inherit {
+        font-variant-caps: inherit;
+      }
+      .nums-normal {
+        font-variant-numeric: normal;
+      }
+      .nums-ordinal {
+        font-variant-numeric: ordinal;
+      }
+      .nums-slashed-zero {
+        font-variant-numeric: slashed-zero;
+      }
+      .nums-lining {
+        font-variant-numeric: lining-nums;
+      }
+      .nums-oldstyle {
+        font-variant-numeric: oldstyle-nums;
+      }
+      .nums-proportional {
+        font-variant-numeric: proportional-nums;
+      }
+      .nums-tabular {
+        font-variant-numeric: tabular-nums;
+      }
+      .nums-diagonal-fractions {
+        font-variant-numeric: diagonal-fractions;
+      }
+      .nums-stacked-fractions {
+        font-variant-numeric: stacked-fractions;
+      }
+      .nums-initial {
+        font-variant-numeric: initial;
+      }
+      .ligatures-normal {
+        font-variant-ligatures: normal;
+      }
+      .ligatures-none {
+        font-variant-ligatures: none;
+      }
+      .ligatures-common {
+        font-variant-ligatures: common-ligatures;
+      }
+      .ligatures-no-common {
+        font-variant-ligatures: no-common-ligatures;
+      }
+      .ligatures-discretionary {
+        font-variant-ligatures: discretionary-ligatures;
+      }
+      .ligatures-no-discretionary {
+        font-variant-ligatures: no-discretionary-ligatures;
+      }
+      .ligatures-historical {
+        font-variant-ligatures: historical-ligatures;
+      }
+      .ligatures-no-historical {
+        font-variant-ligatures: no-historical-ligatures;
+      }
+      .ligatures-contextual {
+        font-variant-ligatures: contextual;
+      }
+      .ligatures-no-contextual {
+        font-variant-ligatures: no-contextual;
+      }
+      .ligatures-revert {
+        font-variant-ligatures: revert;
       }
     `);
   });
@@ -380,14 +533,14 @@ test('text style components can be generated', () => {
           fontSize: theme('fontSize.heading-xs'),
         },
       }),
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
     },
   }, {
     ellipsis: false,
     hyphens: false,
     textUnset: false,
-    caps: false,
-    nums: false,
-    ligatures: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-h1 {
@@ -420,14 +573,14 @@ test('the component prefix can be customized', () => {
           fontSize: theme('fontSize.heading-xl'),
         },
       }),
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
     },
   }, {
     ellipsis: false,
     hyphens: false,
     textUnset: false,
-    caps: false,
-    nums: false,
-    ligatures: false,
     componentPrefix: '',
   }).then(css => {
     expect(css).toMatchCss(`
@@ -474,14 +627,14 @@ test('text styles can extend other text styles', () => {
           fontSize: theme('fontSize.heading'),
         },
       }),
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
     },
   }, {
     ellipsis: false,
     hyphens: false,
     textUnset: false,
-    caps: false,
-    nums: false,
-    ligatures: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-heading {
@@ -552,14 +705,14 @@ test('text styles can extend more than one other text style', () => {
           fontSize: theme('fontSize.heading'),
         },
       }),
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
     },
   }, {
     ellipsis: false,
     hyphens: false,
     textUnset: false,
-    caps: false,
-    nums: false,
-    ligatures: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-heading {
@@ -647,14 +800,14 @@ test('text style components can style their children', () => {
           },
         },
       }),
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
     },
   }, {
     ellipsis: false,
     hyphens: false,
     textUnset: false,
-    caps: false,
-    nums: false,
-    ligatures: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-heading {
@@ -745,14 +898,14 @@ test('text styles can be responsive', () => {
           }
         },
       }),
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
     },
   }, {
     ellipsis: false,
     hyphens: false,
     textUnset: false,
-    caps: false,
-    nums: false,
-    ligatures: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-heading {
@@ -823,14 +976,14 @@ test('text styles can be set to not be output', () => {
           fontSize: theme('fontSize.heading-xl'),
         },
       }),
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
     },
   }, {
     ellipsis: false,
     hyphens: false,
     textUnset: false,
-    caps: false,
-    nums: false,
-    ligatures: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-h1 {
@@ -938,14 +1091,14 @@ test('all these options can be used to generate a full-featured rich text compon
           },
         },
       }),
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
     },
   }, {
     ellipsis: false,
     hyphens: false,
     textUnset: false,
-    caps: false,
-    nums: false,
-    ligatures: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-rich-text {
@@ -1023,9 +1176,9 @@ test('variants can be customized', () => {
       ellipsis: ['hover'],
       hyphens: ['active'],
       textUnset: [],
-      caps: ['focus', 'responsive'],
-      nums: ['group-hover'],
-      ligatures: [],
+      fontVariantCaps: ['focus', 'responsive'],
+      fontVariantNumeric: ['group-hover'],
+      fontVariantLigatures: [],
     },
   }).then(css => {
     expect(css).toMatchCss(`
@@ -1086,161 +1239,161 @@ test('variants can be customized', () => {
       .text-transform-unset {
         text-transform: inherit;
       }
-      .normal-caps {
+      .caps-normal {
         font-variant-caps: normal;
       }
-      .small-caps {
+      .caps-small {
         font-variant-caps: small-caps;
       }
-      .all-small-caps {
+      .caps-all-small {
         font-variant-caps: all-small-caps;
       }
-      .petite-caps {
+      .caps-petite {
         font-variant-caps: petite-caps;
       }
-      .unicase {
+      .caps-unicase {
         font-variant-caps: unicase;
       }
-      .titling-caps {
+      .caps-titling {
         font-variant-caps: titling-caps;
       }
-      .focus\\:normal-caps:focus {
+      .focus\\:caps-normal:focus {
         font-variant-caps: normal;
       }
-      .focus\\:small-caps:focus {
+      .focus\\:caps-small:focus {
         font-variant-caps: small-caps;
       }
-      .focus\\:all-small-caps:focus {
+      .focus\\:caps-all-small:focus {
         font-variant-caps: all-small-caps;
       }
-      .focus\\:petite-caps:focus {
+      .focus\\:caps-petite:focus {
         font-variant-caps: petite-caps;
       }
-      .focus\\:unicase:focus {
+      .focus\\:caps-unicase:focus {
         font-variant-caps: unicase;
       }
-      .focus\\:titling-caps:focus {
+      .focus\\:caps-titling:focus {
         font-variant-caps: titling-caps;
       }
-      .normal-nums {
+      .nums-normal {
         font-variant-numeric: normal;
       }
-      .ordinal-nums {
+      .nums-ordinal {
         font-variant-numeric: ordinal;
       }
-      .slashed-zeros {
+      .nums-slashed-zero {
         font-variant-numeric: slashed-zero;
       }
-      .lining-nums {
+      .nums-lining {
         font-variant-numeric: lining-nums;
       }
-      .oldstyle-nums {
+      .nums-oldstyle {
         font-variant-numeric: oldstyle-nums;
       }
-      .proportional-nums {
+      .nums-proportional {
         font-variant-numeric: proportional-nums;
       }
-      .tabular-nums {
+      .nums-tabular {
         font-variant-numeric: tabular-nums;
       }
-      .diagonal-fractions {
+      .nums-diagonal-fractions {
         font-variant-numeric: diagonal-fractions;
       }
-      .stacked-fractions {
+      .nums-stacked-fractions {
         font-variant-numeric: stacked-fractions;
       }
-      .group:hover .group-hover\\:normal-nums {
+      .group:hover .group-hover\\:nums-normal {
         font-variant-numeric: normal;
       }
-      .group:hover .group-hover\\:ordinal-nums {
+      .group:hover .group-hover\\:nums-ordinal {
         font-variant-numeric: ordinal;
       }
-      .group:hover .group-hover\\:slashed-zeros {
+      .group:hover .group-hover\\:nums-slashed-zero {
         font-variant-numeric: slashed-zero;
       }
-      .group:hover .group-hover\\:lining-nums {
+      .group:hover .group-hover\\:nums-lining {
         font-variant-numeric: lining-nums;
       }
-      .group:hover .group-hover\\:oldstyle-nums {
+      .group:hover .group-hover\\:nums-oldstyle {
         font-variant-numeric: oldstyle-nums;
       }
-      .group:hover .group-hover\\:proportional-nums {
+      .group:hover .group-hover\\:nums-proportional {
         font-variant-numeric: proportional-nums;
       }
-      .group:hover .group-hover\\:tabular-nums {
+      .group:hover .group-hover\\:nums-tabular {
         font-variant-numeric: tabular-nums;
       }
-      .group:hover .group-hover\\:diagonal-fractions {
+      .group:hover .group-hover\\:nums-diagonal-fractions {
         font-variant-numeric: diagonal-fractions;
       }
-      .group:hover .group-hover\\:stacked-fractions {
+      .group:hover .group-hover\\:nums-stacked-fractions {
         font-variant-numeric: stacked-fractions;
       }
-      .normal-ligatures {
+      .ligatures-normal {
         font-variant-ligatures: normal;
       }
-      .no-ligatures {
+      .ligatures-none {
         font-variant-ligatures: none;
       }
-      .common-ligatures {
+      .ligatures-common {
         font-variant-ligatures: common-ligatures;
       }
-      .no-common-ligatures {
+      .ligatures-no-common {
         font-variant-ligatures: no-common-ligatures;
       }
-      .discretionary-ligatures {
+      .ligatures-discretionary {
         font-variant-ligatures: discretionary-ligatures;
       }
-      .no-discretionary-ligatures {
+      .ligatures-no-discretionary {
         font-variant-ligatures: no-discretionary-ligatures;
       }
-      .historical-ligatures {
+      .ligatures-historical {
         font-variant-ligatures: historical-ligatures;
       }
-      .no-historical-ligatures {
+      .ligatures-no-historical {
         font-variant-ligatures: no-historical-ligatures;
       }
-      .contextual-ligatures {
+      .ligatures-contextual {
         font-variant-ligatures: contextual;
       }
-      .no-contextual-ligatures {
+      .ligatures-no-contextual {
         font-variant-ligatures: no-contextual;
       }
       @media (min-width: 640px) {
-        .sm\\:normal-caps {
+        .sm\\:caps-normal {
           font-variant-caps: normal;
         }
-        .sm\\:small-caps {
+        .sm\\:caps-small {
           font-variant-caps: small-caps;
         }
-        .sm\\:all-small-caps {
+        .sm\\:caps-all-small {
           font-variant-caps: all-small-caps;
         }
-        .sm\\:petite-caps {
+        .sm\\:caps-petite {
           font-variant-caps: petite-caps;
         }
-        .sm\\:unicase {
+        .sm\\:caps-unicase {
           font-variant-caps: unicase;
         }
-        .sm\\:titling-caps {
+        .sm\\:caps-titling {
           font-variant-caps: titling-caps;
         }
-        .sm\\:focus\\:normal-caps:focus {
+        .sm\\:focus\\:caps-normal:focus {
           font-variant-caps: normal;
         }
-        .sm\\:focus\\:small-caps:focus {
+        .sm\\:focus\\:caps-small:focus {
           font-variant-caps: small-caps;
         }
-        .sm\\:focus\\:all-small-caps:focus {
+        .sm\\:focus\\:caps-all-small:focus {
           font-variant-caps: all-small-caps;
         }
-        .sm\\:focus\\:petite-caps:focus {
+        .sm\\:focus\\:caps-petite:focus {
           font-variant-caps: petite-caps;
         }
-        .sm\\:focus\\:unicase:focus {
+        .sm\\:focus\\:caps-unicase:focus {
           font-variant-caps: unicase;
         }
-        .sm\\:focus\\:titling-caps:focus {
+        .sm\\:focus\\:caps-titling:focus {
           font-variant-caps: titling-caps;
         }
       }
