@@ -170,9 +170,7 @@ module.exports = plugin.withOptions(function(options = {}) {
     addUtilities(fontVariantLigaturesUtilities, variants('fontVariantLigatures'));
     addComponents(textStyles);
   };
-}, function(options = {}) {
-  options = _.defaults({}, options, defaultOptions);
-
+}, function() {
   return {
     theme: {
       textIndent: {},
