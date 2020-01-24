@@ -116,6 +116,7 @@ npm install tailwindcss-typography
     caps: ['responsive'],
     nums: ['responsive'],
     ligatures: ['responsive'],
+    kern: ['responsive'],
   },
   plugins: [
     require('tailwindcss-typography')({
@@ -126,6 +127,7 @@ npm install tailwindcss-typography
       caps: true,             // whether to generate utilities to use alternate glyphs for capital letters
       nums: true,             // whether to generate utilities to use alternate glyphs for numbers, fractions, and ordinal markers
       ligatures: true,        // whether to generate ligature utilities
+      kern: true,             // whether to generate kerning utilities
       componentPrefix: 'c-',  // the prefix to use for text style classes
     }),
   ],
@@ -273,6 +275,12 @@ This plugin generates the following utilities:
 }
 .no-contextual-ligatures {
   font-variant-ligatures: no-contextual;
+}
+
+/* generated when the "kern" option is set to true */
+.kern {
+  font-feature-settings: 'kern';
+  font-kerning: normal;
 }
 ```
 

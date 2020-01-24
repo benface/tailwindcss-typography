@@ -152,6 +152,10 @@ test('the plugin generates some utilities and responsive variants by default', (
       .no-contextual-ligatures {
         font-variant-ligatures: no-contextual;
       }
+      .kern {
+        font-feature-settings: 'kern';
+        font-kerning: normal;
+      }
       @media (min-width: 640px) {
         .sm\\:ellipsis {
           text-overflow: ellipsis;
@@ -270,6 +274,10 @@ test('the plugin generates some utilities and responsive variants by default', (
         .sm\\:no-contextual-ligatures {
           font-variant-ligatures: no-contextual;
         }
+        .sm\\:kern {
+          font-feature-settings: 'kern';
+          font-kerning: normal;
+        }
       }
     `);
   });
@@ -282,6 +290,7 @@ test('the default utilities can be disabled', () => {
     caps: false,
     nums: false,
     ligatures: false,
+    kern: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .ellipsis {
@@ -326,6 +335,7 @@ test('text indent and text shadow utilities can be customized', () => {
     caps: false,
     nums: false,
     ligatures: false,
+    kern: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .indent-1 {
@@ -388,6 +398,7 @@ test('text style components can be generated', () => {
     caps: false,
     nums: false,
     ligatures: false,
+    kern: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-h1 {
@@ -428,6 +439,7 @@ test('the component prefix can be customized', () => {
     caps: false,
     nums: false,
     ligatures: false,
+    kern: false,
     componentPrefix: '',
   }).then(css => {
     expect(css).toMatchCss(`
@@ -482,6 +494,7 @@ test('text styles can extend other text styles', () => {
     caps: false,
     nums: false,
     ligatures: false,
+    kern: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-heading {
@@ -560,6 +573,7 @@ test('text styles can extend more than one other text style', () => {
     caps: false,
     nums: false,
     ligatures: false,
+    kern: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-heading {
@@ -655,6 +669,7 @@ test('text style components can style their children', () => {
     caps: false,
     nums: false,
     ligatures: false,
+    kern: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-heading {
@@ -753,6 +768,7 @@ test('text styles can be responsive', () => {
     caps: false,
     nums: false,
     ligatures: false,
+    kern: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-heading {
@@ -831,6 +847,7 @@ test('text styles can be set to not be output', () => {
     caps: false,
     nums: false,
     ligatures: false,
+    kern: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-h1 {
@@ -946,6 +963,7 @@ test('all these options can be used to generate a full-featured rich text compon
     caps: false,
     nums: false,
     ligatures: false,
+    kern: false,
   }).then(css => {
     expect(css).toMatchCss(`
       .c-rich-text {
@@ -1026,6 +1044,7 @@ test('variants can be customized', () => {
       caps: ['focus', 'responsive'],
       nums: ['group-hover'],
       ligatures: [],
+      kern: [],
     },
   }).then(css => {
     expect(css).toMatchCss(`
@@ -1205,6 +1224,10 @@ test('variants can be customized', () => {
       }
       .no-contextual-ligatures {
         font-variant-ligatures: no-contextual;
+      }
+      .kern {
+        font-feature-settings: 'kern';
+        font-kerning: normal;
       }
       @media (min-width: 640px) {
         .sm\\:normal-caps {

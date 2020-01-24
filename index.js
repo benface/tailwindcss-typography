@@ -16,6 +16,7 @@ module.exports = function(options = {}) {
       caps: true,
       nums: true,
       ligatures: true,
+      kern: true,
       componentPrefix: 'c-',
     };
     options = _.defaults({}, options, defaultOptions);
@@ -30,6 +31,7 @@ module.exports = function(options = {}) {
     const defaultCapsVariants = ['responsive'];
     const defaultNumsVariants = ['responsive'];
     const defaultLigaturesVariants = ['responsive'];
+    const defaultKernVariants = ['responsive'];
     const defaultTextStylesTheme = {};
 
     const textIndentTheme = theme('textIndent', defaultTextIndentTheme);
@@ -42,6 +44,7 @@ module.exports = function(options = {}) {
     const capsVariants = variants('caps', defaultCapsVariants);
     const numsVariants = variants('nums', defaultNumsVariants);
     const ligaturesVariants = variants('ligatures', defaultLigaturesVariants);
+    const kernVariants = variants('kern', defaultKernVariants);
     const textStylesTheme = theme('textStyles', defaultTextStylesTheme);
 
     const textIndentUtilities = _.fromPairs(
@@ -201,6 +204,13 @@ module.exports = function(options = {}) {
       },
     };
 
+    const kernUtilities = {
+      '.kern': {
+        fontFeatureSettings: "'kern'",
+        fontKerning: 'normal',
+      },
+    };
+
     const resolveTextStyle = function(styles) {
       if (!_.isPlainObject(styles)) {
         return _.isArray(styles) ? styles.join(', ') : styles;
@@ -253,6 +263,9 @@ module.exports = function(options = {}) {
     }
     if (options.ligatures) {
       addUtilities(ligaturesUtilities, ligaturesVariants);
+    }
+    if (options.kern) {
+      addUtilities(kernUtilities, kernVariants);
     }
     addComponents(textStyles);
   };
