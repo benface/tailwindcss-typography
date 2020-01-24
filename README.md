@@ -116,6 +116,7 @@ npm install tailwindcss-typography
     caps: ['responsive'],
     nums: ['responsive'],
     ligatures: ['responsive'],
+    textRendering: ['responsive'],
   },
   plugins: [
     require('tailwindcss-typography')({
@@ -126,6 +127,7 @@ npm install tailwindcss-typography
       caps: true,             // whether to generate utilities to use alternate glyphs for capital letters
       nums: true,             // whether to generate utilities to use alternate glyphs for numbers, fractions, and ordinal markers
       ligatures: true,        // whether to generate ligature utilities
+      textRendering: true,    // whether to generate text rendering utilities
       componentPrefix: 'c-',  // the prefix to use for text style classes
     }),
   ],
@@ -273,6 +275,17 @@ This plugin generates the following utilities:
 }
 .no-contextual-ligatures {
   font-variant-ligatures: no-contextual;
+}
+
+/* generated when the "textRendering" option is set to true */
+.text-optimize-legibility {
+  text-rendering: optimizeLegibility;
+}
+.text-optimize-speed {
+  text-rendering: optimizeSpeed;
+}
+.text-geometric-precision {
+  text-rendering: geometricPrecision;
 }
 ```
 

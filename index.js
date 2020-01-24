@@ -16,6 +16,7 @@ module.exports = function(options = {}) {
       caps: true,
       nums: true,
       ligatures: true,
+      textRendering: true,
       componentPrefix: 'c-',
     };
     options = _.defaults({}, options, defaultOptions);
@@ -30,6 +31,7 @@ module.exports = function(options = {}) {
     const defaultCapsVariants = ['responsive'];
     const defaultNumsVariants = ['responsive'];
     const defaultLigaturesVariants = ['responsive'];
+    const defaultTextRenderingVariants = ['responsive'];
     const defaultTextStylesTheme = {};
 
     const textIndentTheme = theme('textIndent', defaultTextIndentTheme);
@@ -42,6 +44,7 @@ module.exports = function(options = {}) {
     const capsVariants = variants('caps', defaultCapsVariants);
     const numsVariants = variants('nums', defaultNumsVariants);
     const ligaturesVariants = variants('ligatures', defaultLigaturesVariants);
+    const textRenderingVariants = variants('textRendering', defaultTextRenderingVariants);
     const textStylesTheme = theme('textStyles', defaultTextStylesTheme);
 
     const textIndentUtilities = _.fromPairs(
@@ -201,6 +204,18 @@ module.exports = function(options = {}) {
       },
     };
 
+    const textRenderingUtilities = {
+      '.text-optimize-legibility': {
+        textRendering: 'optimizeLegibility',
+      },
+      '.text-optimize-speed': {
+        textRendering: 'optimizeSpeed',
+      },
+      '.text-geometric-precision': {
+        textRendering: 'geometricPrecision',
+      },
+    };
+
     const resolveTextStyle = function(styles) {
       if (!_.isPlainObject(styles)) {
         return _.isArray(styles) ? styles.join(', ') : styles;
@@ -253,6 +268,9 @@ module.exports = function(options = {}) {
     }
     if (options.ligatures) {
       addUtilities(ligaturesUtilities, ligaturesVariants);
+    }
+    if (options.textRendering) {
+      addUtilities(textRenderingUtilities, textRenderingVariants);
     }
     addComponents(textStyles);
   };
