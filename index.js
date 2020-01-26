@@ -125,6 +125,17 @@ module.exports = plugin.withOptions(function(options = {}) {
       })
     );
 
+    const textRenderingUtilities = _.fromPairs(
+      _.map(theme('textRendering'), (value, modifier) => {
+        return [
+          `.${e(`text-${modifier}`)}`,
+          {
+            textRendering: value,
+          },
+        ];
+      })
+    );
+
     const textStylesTheme = theme('textStyles');
 
     const resolveTextStyle = function(styles) {
@@ -168,6 +179,7 @@ module.exports = plugin.withOptions(function(options = {}) {
     addUtilities(fontVariantCapsUtilities, variants('fontVariantCaps'));
     addUtilities(fontVariantNumericUtilities, variants('fontVariantNumeric'));
     addUtilities(fontVariantLigaturesUtilities, variants('fontVariantLigatures'));
+    addUtilities(textRenderingUtilities, variants('textRendering'));
     addComponents(textStyles);
   };
 }, function() {
@@ -206,6 +218,12 @@ module.exports = plugin.withOptions(function(options = {}) {
         'contextual': 'contextual',
         'no-contextual': 'no-contextual',
       },
+      textRendering: {
+        'rendering-auto': 'auto',
+        'optimize-legibility': 'optimizeLegibility',
+        'optimize-speed': 'optimizeSpeed',
+        'geometric-precision': 'geometricPrecision'
+      },
       textStyles: {},
     },
     variants: {
@@ -217,6 +235,7 @@ module.exports = plugin.withOptions(function(options = {}) {
       fontVariantCaps: ['responsive'],
       fontVariantNumeric: ['responsive'],
       fontVariantLigatures: ['responsive'],
+      textRendering: ['responsive'],
     },
   };
 });

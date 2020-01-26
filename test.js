@@ -152,6 +152,18 @@ test('the plugin generates some utilities and responsive variants by default', (
       .ligatures-no-contextual {
         font-variant-ligatures: no-contextual;
       }
+      .text-rendering-auto {
+        text-rendering: auto;
+      }
+      .text-optimize-legibility {
+        text-rendering: optimizeLegibility;
+      }
+      .text-optimize-speed {
+        text-rendering: optimizeSpeed;
+      }
+      .text-geometric-precision {
+        text-rendering: geometricPrecision;
+      }
       @media (min-width: 640px) {
         .sm\\:ellipsis {
           text-overflow: ellipsis;
@@ -270,6 +282,18 @@ test('the plugin generates some utilities and responsive variants by default', (
         .sm\\:ligatures-no-contextual {
           font-variant-ligatures: no-contextual;
         }
+        .sm\\:text-rendering-auto {
+          text-rendering: auto;
+        }
+        .sm\\:text-optimize-legibility {
+          text-rendering: optimizeLegibility;
+        }
+        .sm\\:text-optimize-speed {
+          text-rendering: optimizeSpeed;
+        }
+        .sm\\:text-geometric-precision {
+          text-rendering: geometricPrecision;
+        }
       }
     `);
   });
@@ -281,6 +305,7 @@ test('the font variant utilities can be disabled', () => {
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
+      textRendering: {},
     },
     variants: {
       ellipsis: [],
@@ -341,6 +366,7 @@ test('the ellipsis, hyphens, and text unset utilities can be disabled', () => {
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
+      textRendering: {},
     },
   }, {
     ellipsis: false,
@@ -365,6 +391,7 @@ test('the text indent and text shadow utilities can be customized', () => {
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
+      textRendering: {},
     },
     variants: {
       textIndent: [],
@@ -411,6 +438,7 @@ test('the font variant utilities can be extended', () => {
       fontVariantCaps: [],
       fontVariantNumeric: [],
       fontVariantLigatures: [],
+      textRendering: [],
     },
   }, {
     ellipsis: false,
@@ -502,6 +530,18 @@ test('the font variant utilities can be extended', () => {
       .ligatures-revert {
         font-variant-ligatures: revert;
       }
+      .text-rendering-auto {
+        text-rendering: auto;
+      }
+      .text-optimize-legibility {
+        text-rendering: optimizeLegibility;
+      }
+      .text-optimize-speed {
+        text-rendering: optimizeSpeed;
+      }
+      .text-geometric-precision {
+        text-rendering: geometricPrecision;
+      }
     `);
   });
 });
@@ -536,6 +576,7 @@ test('text style components can be generated', () => {
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
+      textRendering: {},
     },
   }, {
     ellipsis: false,
@@ -576,6 +617,7 @@ test('the component prefix can be customized', () => {
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
+      textRendering: {},
     },
   }, {
     ellipsis: false,
@@ -630,6 +672,7 @@ test('text styles can extend other text styles', () => {
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
+      textRendering: {},
     },
   }, {
     ellipsis: false,
@@ -708,6 +751,7 @@ test('text styles can extend more than one other text style', () => {
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
+      textRendering: {},
     },
   }, {
     ellipsis: false,
@@ -803,6 +847,7 @@ test('text style components can style their children', () => {
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
+      textRendering: {},
     },
   }, {
     ellipsis: false,
@@ -901,6 +946,7 @@ test('text styles can be responsive', () => {
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
+      textRendering: {},
     },
   }, {
     ellipsis: false,
@@ -979,6 +1025,7 @@ test('text styles can be set to not be output', () => {
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
+      textRendering: {},
     },
   }, {
     ellipsis: false,
@@ -1094,6 +1141,7 @@ test('all these options can be used to generate a full-featured rich text compon
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
+      textRendering: {},
     },
   }, {
     ellipsis: false,
@@ -1179,6 +1227,7 @@ test('variants can be customized', () => {
       fontVariantCaps: ['focus', 'responsive'],
       fontVariantNumeric: ['group-hover'],
       fontVariantLigatures: [],
+      textRendering: [],
     },
   }).then(css => {
     expect(css).toMatchCss(`
@@ -1358,6 +1407,18 @@ test('variants can be customized', () => {
       }
       .ligatures-no-contextual {
         font-variant-ligatures: no-contextual;
+      }
+      .text-rendering-auto {
+        text-rendering: auto;
+      }
+      .text-optimize-legibility {
+        text-rendering: optimizeLegibility;
+      }
+      .text-optimize-speed {
+        text-rendering: optimizeSpeed;
+      }
+      .text-geometric-precision {
+        text-rendering: geometricPrecision;
       }
       @media (min-width: 640px) {
         .sm\\:caps-normal {
