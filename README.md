@@ -51,6 +51,12 @@ module.exports = {
       'contextual': 'contextual',
       'no-contextual': 'no-contextual',
     },
+    textRendering: { // defaults to these values
+      'rendering-auto': 'auto',
+      'optimize-legibility': 'optimizeLegibility',
+      'optimize-speed': 'optimizeSpeed',
+      'geometric-precision': 'geometricPrecision'
+    },
     textStyles: theme => ({ // defaults to {}
       heading: {
         output: false, // this means there won't be a "heading" component in the CSS, but it can be extended
@@ -143,16 +149,19 @@ module.exports = {
     textShadow: ['responsive'],
     ellipsis: ['responsive'],
     hyphens: ['responsive'],
+    kerning: ['responsive'],
     textUnset: ['responsive'],
     fontVariantCaps: ['responsive'],
     fontVariantNumeric: ['responsive'],
     fontVariantLigatures: ['responsive'],
+    textRendering: ['responsive'],
   },
   plugins: [
     require('tailwindcss-typography')({
       // all these options default to the values specified here
       ellipsis: true,         // whether to generate ellipsis utilities
       hyphens: true,          // whether to generate hyphenation utilities
+      kerning: true,          // whether to generate kerning utilities
       textUnset: true,        // whether to generate utilities to unset text properties
       componentPrefix: 'c-',  // the prefix to use for text style classes
     }),
@@ -191,6 +200,17 @@ This plugin generates the following utilities:
 }
 .hyphens-auto {
   hyphens: auto;
+}
+
+/* generated when the "kerning" option is set to true */
+.kerning {
+  font-kerning: normal;
+}
+.kerning-none {
+  font-kerning: none;
+}
+.kerning-auto {
+  font-kerning: auto;
 }
 
 /* generated when the "textUnset" option is set to true */
@@ -301,6 +321,20 @@ This plugin generates the following utilities:
 }
 .ligatures-no-contextual {
   font-variant-ligatures: no-contextual;
+}
+
+/* configurable with the "textRendering" theme object */
+.text-rendering-auto {
+  text-rendering: auto;
+}
+.text-optimize-legibility {
+  text-rendering: optimizeLegibility;
+}
+.text-optimize-speed {
+  text-rendering: optimizeSpeed;
+}
+.text-geometric-precision {
+  text-rendering: geometricPrecision;
 }
 ```
 
