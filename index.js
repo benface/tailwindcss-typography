@@ -4,6 +4,7 @@ const _ = require('lodash');
 const defaultOptions = {
   ellipsis: true,
   hyphens: true,
+  kerning: true,
   textUnset: true,
   componentPrefix: 'c-',
 };
@@ -59,6 +60,18 @@ module.exports = plugin.withOptions(function(options = {}) {
       },
       '.hyphens-auto': {
         hyphens: 'auto',
+      },
+    } : {};
+
+    const kerningUtilities = options.kerning ? {
+      '.kerning': {
+        fontKerning: 'normal',
+      },
+      '.kerning-none': {
+        fontKerning: 'none',
+      },
+      '.kerning-auto': {
+        fontKerning: 'auto',
       },
     } : {};
 
@@ -164,6 +177,7 @@ module.exports = plugin.withOptions(function(options = {}) {
     addUtilities(textShadowUtilities, variants('textShadow'));
     addUtilities(ellipsisUtilities, variants('ellipsis'));
     addUtilities(hyphensUtilities, variants('hyphens'));
+    addUtilities(kerningUtilities, variants('kerning'));
     addUtilities(textUnsetUtilities, variants('textUnset'));
     addUtilities(fontVariantCapsUtilities, variants('fontVariantCaps'));
     addUtilities(fontVariantNumericUtilities, variants('fontVariantNumeric'));
@@ -213,6 +227,7 @@ module.exports = plugin.withOptions(function(options = {}) {
       textShadow: ['responsive'],
       ellipsis: ['responsive'],
       hyphens: ['responsive'],
+      kerning: ['responsive'],
       textUnset: ['responsive'],
       fontVariantCaps: ['responsive'],
       fontVariantNumeric: ['responsive'],

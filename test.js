@@ -50,6 +50,15 @@ test('the plugin generates some utilities and responsive variants by default', (
       .hyphens-auto {
         hyphens: auto;
       }
+      .kerning {
+        font-kerning: normal;
+      }
+      .kerning-none {
+        font-kerning: none;
+      }
+      .kerning-auto {
+        font-kerning: auto;
+      }
       .font-family-unset {
         font-family: inherit;
       }
@@ -168,6 +177,15 @@ test('the plugin generates some utilities and responsive variants by default', (
         .sm\\:hyphens-auto {
           hyphens: auto;
         }
+        .sm\\:kerning {
+          font-kerning: normal;
+        }
+        .sm\\:kerning-none {
+          font-kerning: none;
+        }
+        .sm\\:kerning-auto {
+          font-kerning: auto;
+        }
         .sm\\:font-family-unset {
           font-family: inherit;
         }
@@ -285,6 +303,7 @@ test('the font variant utilities can be disabled', () => {
     variants: {
       ellipsis: [],
       hyphens: [],
+      kerning: [],
       textUnset: [],
     },
   }).then(css => {
@@ -303,6 +322,15 @@ test('the font variant utilities can be disabled', () => {
       }
       .hyphens-auto {
         hyphens: auto;
+      }
+      .kerning {
+        font-kerning: normal;
+      }
+      .kerning-none {
+        font-kerning: none;
+      }
+      .kerning-auto {
+        font-kerning: auto;
       }
       .font-family-unset {
         font-family: inherit;
@@ -345,6 +373,7 @@ test('the ellipsis, hyphens, and text unset utilities can be disabled', () => {
   }, {
     ellipsis: false,
     hyphens: false,
+    kerning: false,
     textUnset: false,
   }).then(css => {
     expect(css).toMatchCss(``);
@@ -373,6 +402,7 @@ test('the text indent and text shadow utilities can be customized', () => {
   }, {
     ellipsis: false,
     hyphens: false,
+    kerning: false,
     textUnset: false,
   }).then(css => {
     expect(css).toMatchCss(`
@@ -415,6 +445,7 @@ test('the font variant utilities can be extended', () => {
   }, {
     ellipsis: false,
     hyphens: false,
+    kerning: false,
     textUnset: false,
   }).then(css => {
     expect(css).toMatchCss(`
@@ -540,6 +571,7 @@ test('text style components can be generated', () => {
   }, {
     ellipsis: false,
     hyphens: false,
+    kerning: false,
     textUnset: false,
   }).then(css => {
     expect(css).toMatchCss(`
@@ -580,6 +612,7 @@ test('the component prefix can be customized', () => {
   }, {
     ellipsis: false,
     hyphens: false,
+    kerning: false,
     textUnset: false,
     componentPrefix: '',
   }).then(css => {
@@ -634,6 +667,7 @@ test('text styles can extend other text styles', () => {
   }, {
     ellipsis: false,
     hyphens: false,
+    kerning: false,
     textUnset: false,
   }).then(css => {
     expect(css).toMatchCss(`
@@ -712,6 +746,7 @@ test('text styles can extend more than one other text style', () => {
   }, {
     ellipsis: false,
     hyphens: false,
+    kerning: false,
     textUnset: false,
   }).then(css => {
     expect(css).toMatchCss(`
@@ -807,6 +842,7 @@ test('text style components can style their children', () => {
   }, {
     ellipsis: false,
     hyphens: false,
+    kerning: false,
     textUnset: false,
   }).then(css => {
     expect(css).toMatchCss(`
@@ -905,6 +941,7 @@ test('text styles can be responsive', () => {
   }, {
     ellipsis: false,
     hyphens: false,
+    kerning: false,
     textUnset: false,
   }).then(css => {
     expect(css).toMatchCss(`
@@ -983,6 +1020,7 @@ test('text styles can be set to not be output', () => {
   }, {
     ellipsis: false,
     hyphens: false,
+    kerning: false,
     textUnset: false,
   }).then(css => {
     expect(css).toMatchCss(`
@@ -1098,6 +1136,7 @@ test('all these options can be used to generate a full-featured rich text compon
   }, {
     ellipsis: false,
     hyphens: false,
+    kerning: false,
     textUnset: false,
   }).then(css => {
     expect(css).toMatchCss(`
@@ -1175,6 +1214,7 @@ test('variants can be customized', () => {
     variants: {
       ellipsis: ['hover'],
       hyphens: ['active'],
+      kerning: ['focus'],
       textUnset: [],
       fontVariantCaps: ['focus', 'responsive'],
       fontVariantNumeric: ['group-hover'],
@@ -1211,6 +1251,24 @@ test('variants can be customized', () => {
       }
       .active\\:hyphens-auto:active {
         hyphens: auto;
+      }
+      .kerning {
+        font-kerning: normal;
+      }
+      .kerning-none {
+        font-kerning: none;
+      }
+      .kerning-auto {
+        font-kerning: auto;
+      }
+      .focus\\:kerning:focus {
+        font-kerning: normal;
+      }
+      .focus\\:kerning-none:focus {
+        font-kerning: none;
+      }
+      .focus\\:kerning-auto:focus {
+        font-kerning: auto;
       }
       .font-family-unset {
         font-family: inherit;
