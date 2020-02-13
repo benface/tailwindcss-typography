@@ -9,6 +9,10 @@ const defaultOptions = {
   componentPrefix: 'c-',
 };
 
+const prefixNegativeModifiers = function(base, modifier) {
+  return _.startsWith(modifier, '-') ? `-${base}-${modifier.slice(1)}` : `${base}-${modifier}`;
+};
+
 const camelCaseToKebabCase = function(string) {
   return string
     .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
@@ -23,7 +27,7 @@ module.exports = plugin.withOptions(function(options = {}) {
     const textIndentUtilities = _.fromPairs(
       _.map(theme('textIndent'), (value, modifier) => {
         return [
-          `.${e(`indent-${modifier}`)}`,
+          `.${e(prefixNegativeModifiers('indent', modifier))}`,
           {
             textIndent: value,
           },

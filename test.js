@@ -412,6 +412,7 @@ test('the text indent and text shadow utilities can be customized', () => {
       textIndent: {
         '1': '0.25rem',
         '2': '0.5rem',
+        '-1': '-0.25rem',
       },
       textShadow: {
         'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
@@ -438,6 +439,9 @@ test('the text indent and text shadow utilities can be customized', () => {
       }
       .indent-2 {
         text-indent: 0.5rem;
+      }
+      .-indent-1 {
+        text-indent: -0.25rem;
       }
       .text-shadow {
         text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
