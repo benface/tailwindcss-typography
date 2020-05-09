@@ -24,6 +24,18 @@ module.exports = {
       'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
       'lg': '0 2px 10px rgba(0, 0, 0, 0.5)',
     },
+    textDecorationStyle: { // defaults to these values
+      'solid': 'solid',
+      'double': 'double',
+      'dotted': 'dotted',
+      'dashed': 'dashed',
+      'wavy': 'wavy',
+    },
+    textDecorationColor: { // defaults to theme => theme('colors')
+      'red': '#f00',
+      'green': '#0f0',
+      'blue': '#00f',
+    },
     fontVariantCaps: { // defaults to these values
       'normal': 'normal',
       'small': 'small-caps',
@@ -151,6 +163,8 @@ module.exports = {
   variants: { // all the following default to ['responsive']
     textIndent: ['responsive'],
     textShadow: ['responsive'],
+    textDecorationStyle: ['responsive'],
+    textDecorationColor: ['responsive'],
     ellipsis: ['responsive'],
     hyphens: ['responsive'],
     kerning: ['responsive'],
@@ -185,6 +199,16 @@ This plugin generates the following utilities:
 /* note: the "default" key generates a simple "text-shadow" class (instead of "text-shadow-default") */
 .text-shadow-[key] {
   text-shadow: [value];
+}
+
+/* configurable with the "textDecorationStyle" theme object */
+.line-[key] {
+  text-decoration-style: [value];
+}
+
+/* configurable with the "textDecorationColor" theme object */
+.line-[key] {
+  text-decoration-color: [value];
 }
 
 /* generated when the "ellipsis" option is set to true */

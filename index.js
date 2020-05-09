@@ -13,6 +13,21 @@ const prefixNegativeModifiers = function(base, modifier) {
   return _.startsWith(modifier, '-') ? `-${base}-${modifier.slice(1)}` : `${base}-${modifier}`;
 };
 
+const flattenColorPalette = function(colors) {
+  return _(colors)
+    .flatMap((color, name) => {
+      if (!_.isPlainObject(color)) {
+        return [[name, color]];
+      }
+      return _.map(color, (value, key) => {
+        const suffix = key === 'default' ? '' : `-${key}`;
+        return [`${name}${suffix}`, value];
+      });
+    })
+    .fromPairs()
+    .value();
+};
+
 const camelCaseToKebabCase = function(string) {
   return string
     .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
@@ -41,6 +56,28 @@ module.exports = plugin.withOptions(function(options = {}) {
           `.${e(`text-shadow${modifier === 'default' ? '' : `-${modifier}`}`)}`,
           {
             textShadow: value,
+          },
+        ];
+      })
+    );
+
+    const textDecorationStyleUtilities = _.fromPairs(
+      _.map(theme('textDecorationStyle'), (value, modifier) => {
+        return [
+          `.${e(`line-${modifier}`)}`,
+          {
+            textDecorationStyle: value,
+          },
+        ];
+      })
+    );
+
+    const textDecorationColorUtilities = _.fromPairs(
+      _.map(flattenColorPalette(theme('textDecorationColor')), (value, modifier) => {
+        return [
+          `.${e(`line-${modifier}`)}`,
+          {
+            textDecorationColor: value,
           },
         ];
       })
@@ -190,6 +227,8 @@ module.exports = plugin.withOptions(function(options = {}) {
 
     addUtilities(textIndentUtilities, variants('textIndent'));
     addUtilities(textShadowUtilities, variants('textShadow'));
+    addUtilities(textDecorationStyleUtilities, variants('textDecorationStyle'));
+    addUtilities(textDecorationColorUtilities, variants('textDecorationColor'));
     addUtilities(ellipsisUtilities, variants('ellipsis'));
     addUtilities(hyphensUtilities, variants('hyphens'));
     addUtilities(kerningUtilities, variants('kerning'));
@@ -205,6 +244,14 @@ module.exports = plugin.withOptions(function(options = {}) {
     theme: {
       textIndent: {},
       textShadow: {},
+      textDecorationStyle: {
+        'solid': 'solid',
+        'double': 'double',
+        'dotted': 'dotted',
+        'dashed': 'dashed',
+        'wavy': 'wavy',
+      },
+      textDecorationColor: theme => theme('colors'),
       fontVariantCaps: {
         'normal': 'normal',
         'small': 'small-caps',
@@ -247,6 +294,8 @@ module.exports = plugin.withOptions(function(options = {}) {
     variants: {
       textIndent: ['responsive'],
       textShadow: ['responsive'],
+      textDecorationStyle: ['responsive'],
+      textDecorationColor: ['responsive'],
       ellipsis: ['responsive'],
       hyphens: ['responsive'],
       kerning: ['responsive'],

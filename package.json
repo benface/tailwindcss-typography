@@ -15,11 +15,11 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "github-release-from-changelog": "^2.1.0",
-    "jest": "^25.1.0",
+    "github-release-from-changelog": "^2.1.1",
+    "jest": "^26.0.1",
     "jest-matcher-css": "^1.1.0",
-    "postcss": "^7.0.26",
-    "release-it": "^12.4.3",
-    "tailwindcss": "1.2.0"
+    "postcss": "^7.0.29",
+    "release-it": "^13.5.8",
+    "tailwindcss": "1.4.6"
   }
 }

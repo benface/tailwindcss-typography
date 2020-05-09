@@ -12,6 +12,7 @@ const generatePluginCss = (config, pluginOptions = {}) => {
           screens: {
             'sm': '640px',
           },
+          colors: {},
         },
         corePlugins: false,
         plugins: [
@@ -35,6 +36,21 @@ expect.extend({
 test('the plugin generates some utilities and responsive variants by default', () => {
   return generatePluginCss().then(css => {
     expect(css).toMatchCss(`
+      .line-solid {
+        text-decoration-style: solid;
+      }
+      .line-double {
+        text-decoration-style: double;
+      }
+      .line-dotted {
+        text-decoration-style: dotted;
+      }
+      .line-dashed {
+        text-decoration-style: dashed;
+      }
+      .line-wavy {
+        text-decoration-style: wavy;
+      }
       .ellipsis {
         text-overflow: ellipsis;
       }
@@ -174,6 +190,21 @@ test('the plugin generates some utilities and responsive variants by default', (
         text-rendering: geometricPrecision;
       }
       @media (min-width: 640px) {
+        .sm\\:line-solid {
+          text-decoration-style: solid;
+        }
+        .sm\\:line-double {
+          text-decoration-style: double;
+        }
+        .sm\\:line-dotted {
+          text-decoration-style: dotted;
+        }
+        .sm\\:line-dashed {
+          text-decoration-style: dashed;
+        }
+        .sm\\:line-wavy {
+          text-decoration-style: wavy;
+        }
         .sm\\:ellipsis {
           text-overflow: ellipsis;
         }
@@ -326,6 +357,8 @@ test('the font variant utilities can be disabled', () => {
       textRendering: {},
     },
     variants: {
+      textDecorationStyle: [],
+      textDecorationColor: [],
       ellipsis: [],
       hyphens: [],
       kerning: [],
@@ -333,6 +366,21 @@ test('the font variant utilities can be disabled', () => {
     },
   }).then(css => {
     expect(css).toMatchCss(`
+      .line-solid {
+        text-decoration-style: solid;
+      }
+      .line-double {
+        text-decoration-style: double;
+      }
+      .line-dotted {
+        text-decoration-style: dotted;
+      }
+      .line-dashed {
+        text-decoration-style: dashed;
+      }
+      .line-wavy {
+        text-decoration-style: wavy;
+      }
       .ellipsis {
         text-overflow: ellipsis;
       }
@@ -391,6 +439,8 @@ test('the font variant utilities can be disabled', () => {
 test('the ellipsis, hyphens, and text unset utilities can be disabled', () => {
   return generatePluginCss({
     theme: {
+      textDecorationStyle: {},
+      textDecorationColor: {},
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
@@ -406,7 +456,41 @@ test('the ellipsis, hyphens, and text unset utilities can be disabled', () => {
   });
 });
 
-test('the text indent and text shadow utilities can be customized', () => {
+test('the text decoration color utilities default to the theme’s colors', () => {
+  return generatePluginCss({
+    theme: {
+      colors: {
+        'yellow': '#ff0',
+        'white': '#fff',
+      },
+      textDecorationStyle: {},
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
+      textRendering: {},
+    },
+    variants: {
+      textDecorationStyle: [],
+      textDecorationColor: [],
+    },
+  }, {
+    ellipsis: false,
+    hyphens: false,
+    kerning: false,
+    textUnset: false,
+  }).then(css => {
+    expect(css).toMatchCss(`
+      .line-yellow {
+        text-decoration-color: #ff0;
+      }
+      .line-white {
+        text-decoration-color: #fff;
+      }
+    `);
+  });
+});
+
+test('the text indent, text shadow, and text decoration utilities can be customized', () => {
   return generatePluginCss({
     theme: {
       textIndent: {
@@ -418,6 +502,14 @@ test('the text indent and text shadow utilities can be customized', () => {
         'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
         'lg': '0 2px 10px rgba(0, 0, 0, 0.5)',
       },
+      textDecorationStyle: {
+        'groovy': 'wavy',
+      },
+      textDecorationColor: {
+        'red': '#f00',
+        'green': '#0f0',
+        'blue': '#00f',
+      },
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
@@ -426,6 +518,8 @@ test('the text indent and text shadow utilities can be customized', () => {
     variants: {
       textIndent: [],
       textShadow: [],
+      textDecorationStyle: [],
+      textDecorationColor: [],
     },
   }, {
     ellipsis: false,
@@ -449,6 +543,59 @@ test('the text indent and text shadow utilities can be customized', () => {
       .text-shadow-lg {
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       }
+      .line-groovy {
+        text-decoration-style: wavy;
+      }
+      .line-red {
+        text-decoration-color: #f00;
+      }
+      .line-green {
+        text-decoration-color: #0f0;
+      }
+      .line-blue {
+        text-decoration-color: #00f;
+      }
+    `);
+  });
+});
+
+test('the text decoration color utilities can use nested object notation', () => {
+  return generatePluginCss({
+    theme: {
+      colors: {
+        indigo: {
+          lighter: '#b3bcf5',
+          default: '#5c6ac4',
+          dark: '#202e78',
+        },
+      },
+      textDecorationStyle: {},
+      textDecorationColor: theme => theme('colors'),
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
+      textRendering: {},
+    },
+    variants: {
+      textDecorationStyle: [],
+      textDecorationColor: [],
+    },
+  }, {
+    ellipsis: false,
+    hyphens: false,
+    kerning: false,
+    textUnset: false,
+  }).then(css => {
+    expect(css).toMatchCss(`
+      .line-indigo-lighter {
+        text-decoration-color: #b3bcf5;
+      }
+      .line-indigo {
+        text-decoration-color: #5c6ac4;
+      }
+      .line-indigo-dark {
+        text-decoration-color: #202e78;
+      }
     `);
   });
 });
@@ -456,6 +603,8 @@ test('the text indent and text shadow utilities can be customized', () => {
 test('the font variant utilities can be extended', () => {
   return generatePluginCss({
     theme: {
+      textDecorationStyle: {},
+      textDecorationColor: {},
       extend: {
         fontVariantCaps: {
           'inherit': 'inherit',
@@ -608,6 +757,8 @@ test('text style components can be generated', () => {
           fontSize: theme('fontSize.heading-xs'),
         },
       }),
+      textDecorationStyle: {},
+      textDecorationColor: {},
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
@@ -650,6 +801,8 @@ test('the component prefix can be customized', () => {
           fontSize: theme('fontSize.heading-xl'),
         },
       }),
+      textDecorationStyle: {},
+      textDecorationColor: {},
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
@@ -706,6 +859,8 @@ test('text styles can extend other text styles', () => {
           fontSize: theme('fontSize.heading'),
         },
       }),
+      textDecorationStyle: {},
+      textDecorationColor: {},
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
@@ -786,6 +941,8 @@ test('text styles can extend more than one other text style', () => {
           fontSize: theme('fontSize.heading'),
         },
       }),
+      textDecorationStyle: {},
+      textDecorationColor: {},
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
@@ -883,6 +1040,8 @@ test('text style components can style their children', () => {
           },
         },
       }),
+      textDecorationStyle: {},
+      textDecorationColor: {},
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
@@ -983,6 +1142,8 @@ test('text styles can be responsive', () => {
           }
         },
       }),
+      textDecorationStyle: {},
+      textDecorationColor: {},
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
@@ -1063,6 +1224,8 @@ test('text styles can be set to not be output', () => {
           fontSize: theme('fontSize.heading-xl'),
         },
       }),
+      textDecorationStyle: {},
+      textDecorationColor: {},
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
@@ -1180,6 +1343,8 @@ test('all these options can be used to generate a full-featured rich text compon
           },
         },
       }),
+      textDecorationStyle: {},
+      textDecorationColor: {},
       fontVariantCaps: {},
       fontVariantNumeric: {},
       fontVariantLigatures: {},
@@ -1263,7 +1428,14 @@ test('all these options can be used to generate a full-featured rich text compon
 
 test('variants can be customized', () => {
   return generatePluginCss({
+    theme: {
+      colors: {
+        'red': '#f00',
+      },
+    },
     variants: {
+      textDecorationStyle: ['hover'],
+      textDecorationColor: ['active'],
       ellipsis: ['hover'],
       hyphens: ['active'],
       kerning: ['focus'],
@@ -1275,6 +1447,42 @@ test('variants can be customized', () => {
     },
   }).then(css => {
     expect(css).toMatchCss(`
+      .line-solid {
+        text-decoration-style: solid;
+      }
+      .line-double {
+        text-decoration-style: double;
+      }
+      .line-dotted {
+        text-decoration-style: dotted;
+      }
+      .line-dashed {
+        text-decoration-style: dashed;
+      }
+      .line-wavy {
+        text-decoration-style: wavy;
+      }
+      .hover\\:line-solid:hover {
+        text-decoration-style: solid;
+      }
+      .hover\\:line-double:hover {
+        text-decoration-style: double;
+      }
+      .hover\\:line-dotted:hover {
+        text-decoration-style: dotted;
+      }
+      .hover\\:line-dashed:hover {
+        text-decoration-style: dashed;
+      }
+      .hover\\:line-wavy:hover {
+        text-decoration-style: wavy;
+      }
+      .line-red {
+        text-decoration-color: #f00;
+      }
+      .active\\:line-red:active {
+        text-decoration-color: #f00;
+      }
       .ellipsis {
         text-overflow: ellipsis;
       }
