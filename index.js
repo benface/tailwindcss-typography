@@ -192,29 +192,58 @@ module.exports = plugin.withOptions(function(options = {}) {
 
     const textStylesTheme = theme('textStyles');
 
-    const resolveTextStyle = function(styles) {
-      if (!_.isPlainObject(styles)) {
-        return _.isArray(styles) ? styles.join(', ') : styles;
-      }
-      return _.transform(styles, function(result, value, key) {
-        if (key === 'extends') {
-          _.forEach(_.castArray(value), function(textStyleToExtend) {
-            _.forEach(resolveTextStyle(textStylesTheme[textStyleToExtend]), function(extendedValue, extendedKey) {
-              if (extendedKey === 'output') {
-                return; // continue
-              }
-              result[extendedKey] = resolveTextStyle(extendedValue);
+    const resolveTextStyle = function(name, styles, topLevel = false) {
+      if (_.isPlainObject(styles)) {
+        const resolvedStyles = _.reduce(styles, function(result, value, key) {
+          if (key === 'extends') {
+            _.forEach(_.castArray(value), function(textStyleToExtend) {
+              _.forEach(resolveTextStyle(textStyleToExtend, textStylesTheme[textStyleToExtend], true), function(extendedValue, extendedKey) {
+                if (extendedKey === 'output') {
+                  return; // continue
+                }
+                result = {
+                  ...result,
+                  ...resolveTextStyle(extendedKey, extendedValue),
+                };
+              });
             });
-          });
-          return;
+            return result;
+          }
+          return {
+            ...result,
+            ...resolveTextStyle(key, value),
+          };
+        }, {});
+
+        if (topLevel) {
+          return resolvedStyles;
         }
-        result[key] = resolveTextStyle(value);
-      });
+
+        return {
+          [name]: resolvedStyles,
+        };
+      }
+
+      if (_.isArray(styles)) {
+        if (name === 'fontSize' && styles.length === 2) {
+          return {
+            fontSize: styles[0],
+            lineHeight: styles[1],
+          };
+        }
+        return {
+          [name]: styles.join(', '),
+        };
+      }
+
+      return {
+        [name]: styles,
+      };
     };
 
     const textStyles = _.fromPairs(
       _.map(textStylesTheme, (componentStyles, componentName) => {
-        componentStyles = resolveTextStyle(componentStyles);
+        componentStyles = resolveTextStyle(componentName, componentStyles, true);
         if (componentStyles.output === false) {
           return [];
         }

@@ -901,7 +901,7 @@ test('text styles can extend more than one other text style', () => {
     theme: {
       fontFamily: {
         'default': 'sans-serif',
-        'heading': ['Helvetica', 'Arial', 'sans-serif'],
+        'heading': 'Helvetica',
       },
       fontWeight: {
         'bold': '700',
@@ -956,7 +956,7 @@ test('text styles can extend more than one other text style', () => {
   }).then(css => {
     expect(css).toMatchCss(`
       .c-heading {
-        font-family: Helvetica, Arial, sans-serif;
+        font-family: Helvetica;
         font-weight: 700;
       }
       .c-large-heading {
@@ -964,21 +964,108 @@ test('text styles can extend more than one other text style', () => {
         line-height: 1.25;
       }
       .c-h1 {
-        font-family: Helvetica, Arial, sans-serif;
+        font-family: Helvetica;
         font-weight: 800;
         line-height: 1.25;
         font-size: 64px;
       }
       .c-h2 {
-        font-family: Helvetica, Arial, sans-serif;
+        font-family: Helvetica;
         font-weight: 800;
         line-height: 1.25;
         font-size: 48px;
       }
       .c-h3 {
+        font-family: Helvetica;
+        font-weight: 700;
+        font-size: 36px;
+      }
+    `);
+  });
+});
+
+test('text styles support arrays in fontFamily and fontSize properties', () => {
+  return generatePluginCss({
+    theme: {
+      fontFamily: {
+        'default': 'sans-serif',
+        'heading': ['Helvetica', 'Arial', 'sans-serif'],
+      },
+      fontWeight: {
+        'bold': '700',
+        'extrabold': '800',
+      },
+      fontSize: {
+        'heading-xs': ['24px', '36px'],
+        'heading-sm': ['30px', '45px'],
+        'heading': ['36px', '54px'],
+        'heading-lg': ['48px', '72px'],
+        'heading-xl': ['64px', '96px'],
+      },
+      lineHeight: {
+        'none': '1',
+        'tight': '1.25',
+        'normal': '1.5',
+      },
+      textStyles: theme => ({
+        heading: {
+          fontFamily: theme('fontFamily.heading'),
+          fontWeight: theme('fontWeight.bold'),
+        },
+        largeHeading: {
+          fontWeight: theme('fontWeight.extrabold'),
+        },
+        h1: {
+          extends: ['heading', 'largeHeading'],
+          fontSize: theme('fontSize.heading-xl'),
+        },
+        h2: {
+          extends: ['heading', 'largeHeading'],
+          fontSize: theme('fontSize.heading-lg'),
+        },
+        h3: {
+          extends: 'heading',
+          fontSize: theme('fontSize.heading'),
+        },
+      }),
+      textDecorationStyle: {},
+      textDecorationColor: {},
+      fontVariantCaps: {},
+      fontVariantNumeric: {},
+      fontVariantLigatures: {},
+      textRendering: {},
+    },
+  }, {
+    ellipsis: false,
+    hyphens: false,
+    kerning: false,
+    textUnset: false,
+  }).then(css => {
+    expect(css).toMatchCss(`
+      .c-heading {
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: 700;
+      }
+      .c-large-heading {
+        font-weight: 800;
+      }
+      .c-h1 {
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        font-size: 64px;
+        line-height: 96px;
+      }
+      .c-h2 {
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        font-size: 48px;
+        line-height: 72px;
+      }
+      .c-h3 {
         font-family: Helvetica, Arial, sans-serif;
         font-weight: 700;
         font-size: 36px;
+        line-height: 54px;
       }
     `);
   });
