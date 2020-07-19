@@ -432,6 +432,8 @@ test('the font variant utilities can be disabled', () => {
       .text-transform-unset {
         text-transform: inherit;
       }
+      @media (min-width: 640px) {
+      }
     `);
   });
 });
@@ -452,7 +454,10 @@ test('the ellipsis, hyphens, and text unset utilities can be disabled', () => {
     kerning: false,
     textUnset: false,
   }).then(css => {
-    expect(css).toMatchCss(``);
+    expect(css).toMatchCss(`
+      @media (min-width: 640px) {
+      }
+    `);
   });
 });
 
@@ -485,6 +490,8 @@ test('the text decoration color utilities default to the theme’s colors', () =
       }
       .line-white {
         text-decoration-color: #fff;
+      }
+      @media (min-width: 640px) {
       }
     `);
   });
@@ -555,6 +562,8 @@ test('the text indent, text shadow, and text decoration utilities can be customi
       .line-blue {
         text-decoration-color: #00f;
       }
+      @media (min-width: 640px) {
+      }
     `);
   });
 });
@@ -595,6 +604,8 @@ test('the text decoration color utilities can use nested object notation', () =>
       }
       .line-indigo-dark {
         text-decoration-color: #202e78;
+      }
+      @media (min-width: 640px) {
       }
     `);
   });
@@ -726,6 +737,8 @@ test('the font variant utilities can be extended', () => {
       .text-geometric-precision {
         text-rendering: geometricPrecision;
       }
+      @media (min-width: 640px) {
+      }
     `);
   });
 });
@@ -786,6 +799,8 @@ test('text style components can be generated', () => {
       .c-h5 {
         font-size: 24px;
       }
+      @media (min-width: 640px) {
+      }
     `);
   });
 });
@@ -818,6 +833,8 @@ test('the component prefix can be customized', () => {
     expect(css).toMatchCss(`
       .h1 {
         font-size: 64px;
+      }
+      @media (min-width: 640px) {
       }
     `);
   });
@@ -891,6 +908,8 @@ test('text styles can extend other text styles', () => {
         font-weight: 700;
         line-height: 1.25;
         font-size: 36px;
+      }
+      @media (min-width: 640px) {
       }
     `);
   });
@@ -980,6 +999,8 @@ test('text styles can extend more than one other text style', () => {
         font-weight: 700;
         font-size: 36px;
       }
+      @media (min-width: 640px) {
+      }
     `);
   });
 });
@@ -1066,6 +1087,8 @@ test('text styles support arrays in fontFamily and fontSize properties', () => {
         font-weight: 700;
         font-size: 36px;
         line-height: 54px;
+      }
+      @media (min-width: 640px) {
       }
     `);
   });
@@ -1180,6 +1203,8 @@ test('text style components can style their children', () => {
         line-height: 1.25;
         font-size: 36px;
       }
+      @media (min-width: 640px) {
+      }
     `);
   });
 });
@@ -1277,6 +1302,8 @@ test('text styles can be responsive', () => {
           font-size: 36px;
         }
       }
+      @media (min-width: 640px) {
+      }
     `);
   });
 });
@@ -1329,6 +1356,8 @@ test('text styles can be set to not be output', () => {
         font-weight: 700;
         line-height: 1.25;
         font-size: 64px;
+      }
+      @media (min-width: 640px) {
       }
     `);
   });
@@ -1508,6 +1537,8 @@ test('all these options can be used to generate a full-featured rich text compon
       }
       .c-rich-text i, .c-rich-text em {
         font-style: italic;
+      }
+      @media (min-width: 640px) {
       }
     `);
   });

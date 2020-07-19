@@ -12,14 +12,14 @@
     "release": "f(){ release-it $1 && github-release-from-changelog ;};f"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "devDependencies": {
     "github-release-from-changelog": "^2.1.1",
-    "jest": "^26.0.1",
+    "jest": "^26.1.0",
     "jest-matcher-css": "^1.1.0",
-    "postcss": "^7.0.29",
-    "release-it": "^13.5.8",
-    "tailwindcss": "1.4.6"
+    "postcss": "^7.0.32",
+    "release-it": "^13.6.5",
+    "tailwindcss": "1.5.1"
   }
 }
