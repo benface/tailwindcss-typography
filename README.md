@@ -1,6 +1,6 @@
-# [BLACK LIVES MATTER](https://blacklivesmatters.carrd.co)
+# ⛔️ DEPRECATED
 
-### Be aware. Be angry. Do better. Demand change. Show your support any way you can. Click on the link above to find protests, petitions, and other ways to help. DO NOT LET IT GO SILENT.
+Tailwind CSS has an official [`typography` plugin](https://tailwindcss.com/docs/typography-plugin) that you should use instead of this one. It may not support _all_ the features that this one has (its main use case is styling “vanilla HTML”), but it works with the latest versions of Tailwind, which also support a lot more typography utilities ([`indent`](https://tailwindcss.com/docs/text-indent), [`font-variant-numeric`](https://tailwindcss.com/docs/font-variant-numeric), text decoration color, style, and thickness, etc.).
 
 # Typography Plugin for Tailwind CSS
 
